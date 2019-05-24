@@ -7,7 +7,11 @@ let firstWords = ["Easy", "Awesome", "Corporate", "Amazing", "Magnificent", "Won
 let secondWords = ["Company", "Operation", "Corporation", "Partnership", "Agency", "Institution", 
 "multinational", "Group", "Business", "Firm"];
 //Random number between 0 and 10 generated using random function
-const randomNumber = Math.floor(Math.random() * 10) + 0;
+function randomNumberGenerator(){
+    const randomNumber = Math.floor(Math.random() * 10) + 0;
+    return randomNumber;
+};
+
 //New company name created by concating two words from two different arrays
-let newStartupName = (firstWords[randomNumber] + " " + secondWords[randomNumber]);
+let newStartupName = (firstWords[randomNumberGenerator()] + " " + secondWords[randomNumberGenerator()]);
 console.log("The startup: \"" + newStartupName + "\" contains " + newStartupName.length + " characters");

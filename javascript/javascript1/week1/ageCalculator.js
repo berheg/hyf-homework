@@ -11,9 +11,9 @@ function astrixOutPut(){
 astrixOutPut();
 //Out put to ask birthday
 rl.question('Please enter your Year of birth: ', (answer) => {
-  let yearOfBirth =  answer;  
-  let yearFuture =  2057;
-  let age = yearFuture - yearOfBirth;
+  const yearOfBirth =  answer;  
+  const yearFuture =  2057;
+  const age = yearFuture - yearOfBirth;
     console.log(`You will be ${age} years old in ${yearFuture}`); 
     astrixOutPut();   
   rl.close();
