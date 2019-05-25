@@ -20,27 +20,27 @@ for (let i=0; i<2;i++){
 };
 //Out put function for each person
 function outPut(name,height,width,deep,gardenSizeInM2,houseCosts){
-    volume= volumeInMeters(height,width,deep);
-    housePrice= housePriceEstimated(volume,gardenSizeInM2);
-    costDifference= costDifferenceCalculator(houseCosts,housePrice);
-    console.log(name +' estimated price: ' + housePrice);
-    console.log(name +' pays: ' + houseCosts);
-    if(costDifference>0){
-        console.log(name +' pays extra ' + costDifference);
-    }
-    else{        
-        console.log(name +' pays less '+ -(costDifference));
-    }
+    for (let i=0; i<2; i++)
+    {
+        volume = volumeInMeters(height[i],width[i],deep[i]);
+        housePrice= housePriceEstimated(volume,gardenSizeInM2[i]);
+        costDifference= costDifferenceCalculator(houseCosts[i],housePrice);
+        console.log(name[i] +' estimated price: ' + housePrice);
+        console.log(name[i] +' pays: ' + houseCosts[i]);
+        if(costDifference>0){
+            console.log(name[i] +' pays extra ' + costDifference);
+        }
+        else{        
+            console.log(name[i] +' pays less '+ -(costDifference));
+        } 
+        astrixOutPut();
+    };    
 };
-// calls for outPut function for Peter
-outPut('Peter',10,8,10,100,2500000);
-astrixOutPut();
-// calls for outPut function for Julia
-outPut('Julia',8,5,11,70,1000000);
-//calling astrixOutPut twice using a loop 
-for (let i=0; i<2;i++){
-    astrixOutPut();   
-};
+// calls for outPut function for Peter and Julia using array
+outPut(['Peter','Julia'],[10,8],[8,5],[10,11],[100,70],[2500000,1000000]);
+//calling astrixOutPut 
+astrixOutPut();   
+
 
 
 
