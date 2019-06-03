@@ -4,11 +4,16 @@ const class07Students = [];
 //addStudentToClass add students to class07Students array
 function addStudentToClass(studentName) {
     if(getNumberOfStudents(class07Students)<6){
-        for(let i=0;i< getNumberOfStudents(class07Students);i++){
-            if(studentName == class07Students[i]){
-                let outPutString= 'Student ' + studentName + ' is already in the class'
-                return outPutString;
-            }
+        if(studentName == ' '){
+            outPutString = 'You need to give a name to be registared!';
+            return outPutString;
+        }else{
+            for(let i=0;i< getNumberOfStudents(class07Students);i++){
+                if(studentName == class07Students[i]){
+                    let outPutString= 'Student ' + studentName + ' is already in the class'
+                    return outPutString;
+                }
+            }        
         }        
     }else if(studentName== 'Queen'){
             console.log('We add her because she is ' + studentName)
@@ -39,7 +44,7 @@ function showListsInClass(studentName){
 }
 astrixOutPut();
 //Testing sample input array that fulfills all conditions
-let name= ['Girmay','Maria','Nuru','Christofer','Benjamin','Rasmusun','Jon','Queen']
+let name= ['Girmay','Maria','Maria',' ','Nuru','Christofer','Benjamin','Rasmusun','Jon','Queen']
 showListsInClass(name);
 console.log('Number of Students: ' + getNumberOfStudents(class07Students));
 astrixOutPut();
