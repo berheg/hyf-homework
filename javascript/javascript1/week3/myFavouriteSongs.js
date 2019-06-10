@@ -46,8 +46,8 @@ console.log(songDatabase);
 //Fuzzy search is included
 function findObjectByKey(array, key, value) {
     const lengthOfString = value.length;
-    for (var i = 0; i < array.length; i++) {        
-        if (array[i][key] === value || (array[i][key].slice(0,lengthOfString) == value)) {
+    for (let i = 0; i < array.length; i++) {        
+        if (array[i][key] === value || (array[i][key].slice(0,lengthOfString) === value)) {
             return i;
         }
     };    
