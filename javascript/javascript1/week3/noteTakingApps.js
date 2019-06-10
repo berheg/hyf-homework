@@ -2,18 +2,14 @@
 //notes array is created to save the notes and id as object, scope global
 let notes = [];
 //addNotes adds an object with content and id keys to notes array
-function addNote(content,id){
-    const obj = {
-        content: content,
-        id: id,
-    };
-    notes.push(obj);
+function addNote(content,id){    
+    notes.push({content,id});
 };
 //returns the note taken from id given
 function getNoteFromId(id){
     if(typeof(id)== 'number'){
         for(let i=0; i<notes.length; i++){
-            if(id == notes[i].id){
+            if(id === notes[i].id){
                 outPut = notes[i].content;
                 return outPut;
             }
