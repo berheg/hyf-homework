@@ -4,12 +4,13 @@ let activities = [];
 //addActivity function adds an object to the activities array and date is generated automatically
 function addActivity(activity,duration){
     let today  = new Date();
-    const obj = {
+    const date = `${today.toLocaleDateString("en-US")}`;
+    /*const obj = {
         date: `${today.toLocaleDateString("en-US")}`,
         activity:`${activity}`,
         duration: duration,
-    }
-    activities.push(obj);
+    }*/
+    activities.push({date,activity,duration});
     return ;
 }
 //showStatus function shoows the activities you registared and the total minutes you use
@@ -19,7 +20,7 @@ function showStatus(activities){
         outPut = "Add some activities before calling showStatus";
     }else{
         totalDuration = 0;
-        let today  = new Date();        
+        const today  = new Date();        
         for(let i=0; i<num;i++){
             if(activities[i].date === `${today.toLocaleDateString("en-US")}`)
             totalDuration += activities[i].duration; 
