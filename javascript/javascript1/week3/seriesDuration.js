@@ -26,12 +26,12 @@ const seriesDurations = [
   const totalHours = 8409600;
   //function returns total hours per series
   function getTotalHoursPerSeries(obj){
-    totalHoursPerSeries = obj.days*24 + obj.hours + (obj.minutes/60);
+    const totalHoursPerSeries = obj.days*24 + obj.hours + (obj.minutes/60);
     return totalHoursPerSeries;
   }
   //function returns percentage of your life wasted on single series 
   function getPercentageOfMylifePerSeries(HoursPerSeries,totalHours){
-    percentageOfMylifePerSeries = (HoursPerSeries/totalHours)*100;
+    const percentageOfMylifePerSeries = (HoursPerSeries/totalHours)*100;
     return percentageOfMylifePerSeries;
   }
   //For loop for calculating the total percentage from each percentage of a series
