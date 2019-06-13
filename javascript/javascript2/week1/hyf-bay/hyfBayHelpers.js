@@ -1,5 +1,5 @@
 /* DONT MODIFY ANY OF THIS CODE!!!*/
-const testProductNames = ['Flat screen', 'Mobile phone', 'Wallet'];
+
 window.getAvailableProducts = function() {
     function getRandomInt(min, max) {
         min = Math.ceil(min);
@@ -66,12 +66,3 @@ window.sendPricesToServer = function(prices, callback) {
         callback(`These prices were received ${prices}`);
     }, 3000)
 }
-function renderProducts(products){
-    const ul = document.querySelector('.productsList');
-    for( let product of products){
-        const li = document.createElement('li');
-        li.innerHTML = product;
-        ul.appendChild(li); 
-    }
-};
-renderProducts(testProductNames);
