@@ -1,8 +1,11 @@
 //Default constant text is assigned for parameters 
 const text = "no text given " 
 //getFullname function with three variables and default value
-function getFullname(firstname=text,surname=text,useFormalName=text){
+function getFullname(firstname,surname,useFormalName){
     //fullname is assigned to the given parameters
+    if(firstname === undefined || surname === undefined ){
+        return 'You have to set first name and sur name first!'
+    }
     let fullname= firstname + ' ' + surname;
     //if the third parameter is true and not default value
     if(useFormalName){
