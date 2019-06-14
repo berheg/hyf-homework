@@ -1,41 +1,41 @@
 console.log('Script loaded');
 
 console.log(getAvailableProducts());
-const products = getAvailableProducts();
-console.log(products) 
-function renderProducts(products){
-    const ul = document.querySelector("section.products > ul");
-    
-    for( let product of products){
-        const listName = document.createElement('li');
-        listName.innerHTML = product.name + '|';
-        const listPrice = document.createElement('li');
-        listPrice.innerHTML = product.price + '|';
-        const listRating = document.createElement('li');
-        listRating.innerHTML = product.rating + '|'; 
-        ul.appendChild(listName); 
-        ul.appendChild(listPrice); 
-        ul.appendChild(listRating); 
-        listShipsTo = document.createElement('li');
-        listShipsTo.innerHTML = product.shipsTo;     
-        //const ul = document.('ul')       
-        ul.appendChild(listShipsTo);
-    };
-};
-/*function createList(parent) {
-    const ul = document.createElement('ul')
-    const keys = Object.keys(parent);
-    for (const key of keys) {
-        const li = document.createElement('li');
-        if(Array.isArray(parent[key])){
-            li.appendChild(createList(parent[key]));
-        } else {
-            li.innerHTML = parent[key];
-            li.setAttribute('class', key)
-        }
-        ul.appendChild(li);
 
+function createHTMLElement(tagName, className, text) {
+    const element = document.createElement(tagName);
+    element.className = className;
+    element.innerHTML = text;
+    return element;
+}
+
+// creat a ul 
+function creatInsideUl(product) {
+    const ul = document.createElement("ul");
+        ul.appendChild(createHTMLElement('li', 'name', product.name)); // <li class="name">My Product</li>
+        ul.appendChild(createHTMLElement('li', 'price', product.price));
+        ul.appendChild(createHTMLElement('li', 'rating', product.rating));
+        ul.appendChild(creatUlShipping(product.shipsTo));
+     return ul ;     
+}
+// creat a ul for shipTo 
+function creatUlShipping(shipsTo) {
+    const ul = document.createElement("ul");
+        for (const item of shipsTo ){
+            ul.appendChild(createHTMLElement('li', ' ', item));    
+        }
+    return ul;    
+}
+
+// creat list of product with all detail
+function renderProducts (productList){
+    const ul = document.querySelector("section.products > ul");
+    console.log(creatInsideUl(productList[0]))
+    for (const item of productList)  {
+        const li = document.createElement("li");
+        li.appendChild(creatInsideUl(item)) ;
+        ul.appendChild(li);
+        console.log(li +'|' );
     }
-    return ul;
-}*/
-    renderProducts(products);
+}
+    renderProducts(getAvailableProducts());
