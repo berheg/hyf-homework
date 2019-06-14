@@ -8,17 +8,17 @@ function renderProducts(products){
     
     for( let product of products){
         const listName = document.createElement('li');
-        listName.innerHTML = product.name;
+        listName.innerHTML = product.name + '|';
         const listPrice = document.createElement('li');
-        listPrice.innerHTML = product.price;
+        listPrice.innerHTML = product.price + '|';
         const listRating = document.createElement('li');
-        listRating.innerHTML = product.rating; 
+        listRating.innerHTML = product.rating + '|'; 
         ul.appendChild(listName); 
         ul.appendChild(listPrice); 
         ul.appendChild(listRating); 
         listShipsTo = document.createElement('li');
         listShipsTo.innerHTML = product.shipsTo;     
-        const ul = document.createElement('ul')       
+        //const ul = document.('ul')       
         ul.appendChild(listShipsTo);
     };
 };
