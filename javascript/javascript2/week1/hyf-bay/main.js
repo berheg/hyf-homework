@@ -1,41 +1,39 @@
 console.log('Script loaded');
 
 console.log(getAvailableProducts());
+//forming list with the className
+function creatListWithClassName(tagName, className, text) {
+    const product = document.createElement(tagName);
+    product.className = className;
+    product.innerHTML = text;
+    return product;
+};
 
-function createHTMLElement(tagName, className, text) {
-    const element = document.createElement(tagName);
-    element.className = className;
-    element.innerHTML = text;
-    return element;
-}
-
-// creat a ul 
-function creatInsideUl(product) {
+// creat list inside ul
+function creatListsInsideUl(product) {
     const ul = document.createElement("ul");
-        ul.appendChild(createHTMLElement('li', 'name', product.name)); // <li class="name">My Product</li>
-        ul.appendChild(createHTMLElement('li', 'price', product.price));
-        ul.appendChild(createHTMLElement('li', 'rating', product.rating));
+        ul.appendChild(creatListWithClassName('li', 'name', product.name)); 
+        ul.appendChild(creatListWithClassName('li', 'price', product.price));
+        ul.appendChild(creatListWithClassName('li', 'rating', product.rating));
         ul.appendChild(creatUlShipping(product.shipsTo));
      return ul ;     
-}
-// creat a ul for shipTo 
+};
+// creat a ul for shipTo and creat lists shipsTo
 function creatUlShipping(shipsTo) {
     const ul = document.createElement("ul");
         for (const item of shipsTo ){
-            ul.appendChild(createHTMLElement('li', ' ', item));    
+            ul.appendChild(creatListWithClassName('li', ' ', item));    
         }
     return ul;    
-}
+};
 
-// creat list of product with all detail
+// creat list of product object with attributies name, price, rating and shipsTo and renders 
 function renderProducts (productList){
     const ul = document.querySelector("section.products > ul");
-    console.log(creatInsideUl(productList[0]))
-    for (const item of productList)  {
+    for (const product of productList)  {
         const li = document.createElement("li");
-        li.appendChild(creatInsideUl(item)) ;
+        li.appendChild(creatListsInsideUl(product)) ;
         ul.appendChild(li);
-        console.log(li +'|' );
     }
-}
-    renderProducts(getAvailableProducts());
+};
+renderProducts(getAvailableProducts());
