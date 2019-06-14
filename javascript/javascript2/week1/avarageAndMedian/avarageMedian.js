@@ -29,7 +29,7 @@ alert("The array: [" + housePrices + "]" +
  + avarageMedian(housePrices).avarage);
 const h1 = document.createElement('h1');
 h1.innerText = "The Avarage and the median of the array: ";
-const par = document.createElement('p1');
+const par = document.querySelector('p');
 par.innerText = '[' + housePrices + ']';
 const para = document.createElement('p');
 para.innerText = 'The median is: ' + avarageMedian(housePrices).median + '\n The avarage is: ' + avarageMedian(housePrices).avarage;
