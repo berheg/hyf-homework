@@ -1,62 +1,97 @@
-const h1 = document.createElement('h1');
-h1.innerText = "Insert your name and click the button to get a spirit animal fit!";
-const inputBox = document.createElement("input");
-inputBox.setAttribute("type","text");
 
-const btn = document.createElement("button");
-btn.innerText = "Click Me"
-document.body.appendChild(h1);
-document.body.appendChild(inputBox);
-h1.innerText = "Insert your name and select when to get a spirit animal fit!";
+const spiritAnimal = ["The flying rat","The dancing mouse","cat","The barking dog","fox","sheep","The hungry lion","tiger","The sleeping camel","The milking cow"];
 
-/*const selectObject = document.createElement("SELECT");
-selectObject.setAttribute("id", "mySelect");
-document.body.appendChild(selectObject);
-
-let dropDownList = document.createElement("option");
-dropDownList.setAttribute("value", "volvocar");
-const option1 = document.createTextNode("When clicks the button");
-selectObject.appendChild(option1);
-document.querySelector("#mySelect").appendChild(option1);
-const option2 = document.createTextNode("Whwn hovers the input field");
-dropDownList.appendChild(option2);
-document.getElementById("mySelect").appendChild(option2);
-const option3 = document.createTextNode("When text is written in the input field");
-dropDownList.appendChild(option3);
-document.getElementById("mySelect").appendChild(option3);*/
-const optionSelected = document.querySelector('#mySelect');
-const para = document.createElement('p');
-para.innerText = optionSelected.nodeValue;
-document.body.appendChild(para);
-if(optionSelected.nodeValue === 0){
-    btn.addEventListener("click", function(){
-        const spiritAnimal = ["The flying rat","The dancing mouse","cat","The barking dog","fox","sheep","lion","tiger","camel","cow"];
-        const randomIndex = parseInt(Math.random() * spiritAnimal.length);          
+const btn = document.querySelector('button.btn');
+const inputBox = document.querySelector('input.userName');
+const result = document.querySelector('h1.result');
+const select = document.querySelector('select.selectEvent');
+btn.addEventListener('click',renderNewAnimalSpirit);
+inputBox.addEventListener('mouseover',renderNewAnimalSpirit);
+inputBox.addEventListener('change',renderNewAnimalSpirit);
+  function renderNewAnimalSpirit() {  
+        const randomIndex = parseInt(Math.random() * spiritAnimal.length);
+        let outPut = '' ;
         if(inputBox.value === ""){
-            alert("Please insert your name on the input box and click the button");     
+            alert('Could you please insert your name and select one in the dropdown list!')    
         }else{         
-            alert(inputBox.value + "-" + spiritAnimal[randomIndex]); 
-            const anchorTag = document.createElement('a');
-            anchorTag.href = 'noInputDisplay.html';
-            document.body.appendChild(anchorTag);
-            btn.href ='noInputDisplay.html';
+            outPut =(inputBox.value + "-" + spiritAnimal[randomIndex]);     
             
-        }       
-    });
-}else if(optionSelected.nodeValue === 1){
-    inputBox.addEventListener("hover",function(){
-        const spiritAnimal = ["The flying rat","The dancing mouse","cat","The barking dog","fox","sheep","lion","tiger","camel","cow"];
-        const randomIndex = parseInt(Math.random() * 10);          
-        if(inputBox.value === ""){
-            alert("Please insert your name on the input box and click the button");     
-        }else{         
-            alert(inputBox.value + "-" + spiritAnimal[randomIndex]); 
-            /*const anchorTag = document.createElement('a');
-            anchorTag.href = 'noInputDisplay.html';
-            document.body.appendChild(anchorTag);*/
-            
-        }       
-    });    
-}
+        }
+        result.innerHTML = outPut;     
+        
+      };
+  /*function addListeners(){
+      if(window.addEventListener){
+          document.getElementById('btn').addEventListener('click',renderNewAnimalSpirit());
+          //document.getElementById('userName').addEventListener('onmouseenter',renderNewAnimalSpirit(),false);
+          //document.getElementById('userName').addEventListener('Mouseover',renderNewAnimalSpirit(),false);
+      }
+      window.onload = addListeners;
 
-document.body.appendChild(btn);
+  }*/
+  
+  /*function listenToSelectElement() {
+    const select = document.querySelector('select');
+  
+    select.addEventListener('change', selectchangeHandler)
+  
+  }  
+  
+  function selectchangeHandler() {
+    const select = document.querySelector('select');
+  
+    const selectedValue = select.value;
+  
+    if (selectedValue === 'buttonClick') {
+      listenToButtonClick();
+    } else if (selectedValue === 'hoverOnInput') {
+      listenToHover();
+    } else {
+      listenToTextchange();
+    }
+  }
+  
+  function listenToButtonClick() {   
+  
+    btn.addEventListener('click', buttonClickHandler);
+    input.removeEventListener('onmouseenter', listenToHover);
+    input.removeEventListener('keyup', textChangeHandler);
+  }
+  
+  function buttonClickHandler() {
+      alert('Could you please insert your name and select one in the dropdown list!');
+    result.innerHTML = renderNewAnimalSpirit(); 
+    
+  }
+  
+  function listenToHover() {
+    const btn = document.querySelector('button');
+    const input = document.querySelector('input');
+  
+    btn.removeEventListener('click', buttonClickHandler);
+    input.addEventListener('onmouseenter', listenToHover);
+    input.removeEventListener('keyup', textChangeHandler);
+  
+  }
+  function hoverHandler() {
+
+    result.innerHTML = renderNewAnimalSpirit();
+  
+  }
+  
+  
+  function listenToTextchange () {
+    const btn = document.querySelector('button');
+    const input = document.querySelector('input');
+  
+    btn.removeEventListener('click', buttonClickHandler);
+    input.removeEventListener('onmouseenter', listenToHover);
+    input.addEventListener('keyup', textChangeHandler);
+  
+  }
+  function textChangeHandler() {
+    result.innerHTML = renderNewAnimalSpirit();  
+  }  
+  window.onload = listenToSelectElement();
+  listenToSelectElement();
+*/
