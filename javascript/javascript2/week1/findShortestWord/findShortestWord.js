@@ -11,9 +11,8 @@ function getShortestWord(str){
   };
   return result;
 };
-alert("The shortest Word is: " + getShortestWord(danishWords));
 const h1 = document.createElement('h1');
-const par = document.createElement('p1');
+const par = document.createElement('p');
 h1.innerText = "The given array of Words: ";
 par.innerText = '[' + danishWords + ']';
 document.body.appendChild(h1);
