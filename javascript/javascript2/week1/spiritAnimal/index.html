@@ -10,25 +10,24 @@
     </head>
     
     <body> 
-        <header>SPIRIT ANIMAL GENERATOR</header>       
+        <header> ANIMAL SPIRIT GENERATOR</header>       
         <div class="resultDisplay">
             <h1 class="result" id="result"></h1>
         </div>
-        
-        <label for="userName">Name:</label>
-        <input type="text" class="userName">
-        
-        <!---->
-        
         <label for="selectOption">When shall we generate the spirit animal name:</label>
         <select name="Choice" required id="mySelect" class="selectEvent">
-            <option value="buttonClick">When clicks the button</option>
-            <option value="hoverOnInput">When hovers the input field</option>
-            <option value="textChange">When text is written in the input field</option>                          
-        </select>             
-         
+                <option value="buttonClick">When clicks the button</option>
+                <option value="hoverOnInput">When hovers the input field</option>
+                <option value="textChange">When text is written in the input field</option>                          
+        </select>         
+        <label for="userName">Name:</label>
+        <input type="text" class="userName">       
+        <!---->       
         <div>
             <button class="btn" id="btn">Generate</button>
+        </div>
+        <div class="resultDisplay">
+            <h1 class="result" id="result"></h1>
         </div>
              
         <script src="spiritAnimalNameGenerator.js"></script>
