@@ -11,39 +11,39 @@ const result = document.querySelector('h1.result');
 //select class selectEvent query is assigned to select
 const select = document.querySelector('select');
 //button click eventlistener
-btn.addEventListener('click',renderNewAnimalSpirit);
+btn.addEventListener('click', function(){
+    if(select.value === 'mouseover'  || select.value === 'textChange' || select.value === 'none'){
+        event.stopPropagation();
+    }else{
+        renderNewAnimalSpirit();
+    }
+});
 //mouseover and change eventlistener
 inputBox.addEventListener('mouseover', function(){
-    if(select.value === 'buttonClick'  || select.value === 'textChange'){
+    if(select.value === 'buttonClick'  || select.value === 'textChange' || select.value === 'none'){
         event.stopPropagation();
     }else{
         renderNewAnimalSpirit();
     }
 }); 
-inputBox.addEventListener('keydown',function(){
-    if(select.value === 'buttonClick'  || select.value === 'mouseover'){
+inputBox.addEventListener('change',function(){
+    if(select.value === 'buttonClick'  || select.value === 'mouseover' || select.value === 'none'){
         event.stopPropagation();
     }else{
         renderNewAnimalSpirit();
     }
-
-});      
+});  
 
 //Animal spirit rendering function based on the input value
 function renderNewAnimalSpirit() {   
     const randomIndex = parseInt(Math.random() * spiritAnimal.length);
     let outPut = '' ;
     if(inputBox.value === ""){
-        alert('\nCould you please insert your name and select one in the dropdown list!')
-           
+       outPut = 'please insert your name and select one in the dropdown list!'           
     }else{         
         outPut =(inputBox.value + "-" + spiritAnimal[randomIndex]);            
         
     }
     result.innerHTML = outPut;
-    select.value = 'buttonClick';    
-    
-    };
- 
-
-  
+    select.value = 'none';    
+};
