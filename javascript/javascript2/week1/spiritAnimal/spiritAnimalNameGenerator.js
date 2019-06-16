@@ -14,20 +14,21 @@ const select = document.querySelector('select');
 btn.addEventListener('click',renderNewAnimalSpirit);
 //mouseover and change eventlistener
 inputBox.addEventListener('mouseover', function(){
-    if(select.value == 'buttonClick'){
+    if(select.value === 'buttonClick'  || select.value === 'textChange'){
         event.stopPropagation();
     }else{
         renderNewAnimalSpirit();
     }
-});       
-//Handles select change    
-select.addEventListener('change', function () {    
-    if (select.options[0].selected) {
-        btn.disabled = false;
-    } else {
-        btn.disabled = true;
+}); 
+inputBox.addEventListener('keydown',function(){
+    if(select.value === 'buttonClick'  || select.value === 'mouseover'){
+        event.stopPropagation();
+    }else{
+        renderNewAnimalSpirit();
     }
-});
+
+});      
+
 //Animal spirit rendering function based on the input value
 function renderNewAnimalSpirit() {   
     const randomIndex = parseInt(Math.random() * spiritAnimal.length);
@@ -36,10 +37,11 @@ function renderNewAnimalSpirit() {
         alert('\nCould you please insert your name and select one in the dropdown list!')
            
     }else{         
-        outPut =(inputBox.value + "-" + spiritAnimal[randomIndex]);     
+        outPut =(inputBox.value + "-" + spiritAnimal[randomIndex]);            
         
     }
-    result.innerHTML = outPut;   
+    result.innerHTML = outPut;
+    select.value = 'buttonClick';    
     
     };
  
