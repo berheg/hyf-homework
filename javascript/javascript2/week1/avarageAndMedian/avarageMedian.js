@@ -17,7 +17,7 @@ function avarageMedian(num) {
     if (numsLen % 2 === 0) { 
     
         // average of two middle num
-        median = (num[numsLen / 2 + 1] + num[numsLen / 2]) / 2;
+        median = (num[numsLen / 2 - 1] + num[numsLen / 2]) / 2;
     } else { // is odd
         // middle number only
         median = num[(numsLen + 1) / 2];
