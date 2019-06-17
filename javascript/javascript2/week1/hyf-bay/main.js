@@ -1,7 +1,7 @@
 console.log('Script loaded');
 
 console.log(getAvailableProducts());
-//forming list with the className
+//forming element with the className
 function creatElementWithClassName(tagName, className, text) {
     const element = document.createElement(tagName);
     element.className = className;
