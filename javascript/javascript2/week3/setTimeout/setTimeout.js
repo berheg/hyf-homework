@@ -17,7 +17,7 @@ setTimeout(() => {
       div.appendChild(psix);    
   },delay);
 }
-setTimeForLogout(1000,'1 minute remainder!');
+setTimeForLogout(1000,'1 minute remainder after page loaded!');
   
 btn.addEventListener('click', ()=>{setTimeForLogout(3500,'3.5 seconds after button is clicked')
 
