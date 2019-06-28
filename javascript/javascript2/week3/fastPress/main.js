@@ -1,3 +1,6 @@
+/* 
+Game to be played by clicking S and L section
+*/
 const button = document.getElementById("clickme");
 const input = document.querySelector('input.setTime');
 const remainder = document.querySelector('p.remainder');
@@ -20,18 +23,18 @@ gameStarter.addEventListener('click',function(){
     start = true;
     startGame();
 });
-//input.addEventListener('input',startGame);
-const confettiSettings = { target: 'my-canvas' };
-//const confetti = new ConfettiGenerator(confettiSettings);
 restartBtn.addEventListener('click',function(){
-    if(timeout)
+    if(timeout){
         timeout= false;
         start = false;
         remainder.innerHTML = ''
         clickdisplay.innerHTML = 'Press S ';
         secondClickDisplay.innerHTML = 'Press L ';
+        countDisplay.innerHTML = '';
+        countTwoDisplay.innerHTML = '';
         count = 0;
         countTwo = 0;
+    }        
 });
 function startGame(){
     if(!timeout){
@@ -51,16 +54,12 @@ function startGame(){
                         countTwo += 1;
                         secondClickDisplay.innerHTML = 'Press L <br>' + countTwo; 
                     }                
-                }); 
-                       
+                });                       
             setTimeout(()=>{
                 if(count > countTwo){
-                    remainder.innerHTML = 'Press S Wins';
-                                        
+                    countDisplay.innerHTML = 'You Win Congra!!!';                                                           
                 }else if(count<countTwo){
-                    remainder.innerHTML = 'Press L Wins';
-                            
-                    //confetti.render();  
+                    countTwoDisplay.innerHTML = 'You Win Congra!!!'; 
                 }else{
                     remainder.innerHTML = 'No one Wins';
                 }                
