@@ -40,6 +40,7 @@ const ul = document.querySelector("section.products > ul");
 const span = document.createElement('span.total'); 
 // creat list of product object with attributies name, price, rating and shipsTo and renders 
 function renderProducts (productList){
+    //ul.innerHTML = '';
     productList.sort();
     let total = 0;
     const ul = document.querySelector("section.products > ul");
@@ -90,18 +91,38 @@ const sortOption = {
     Expensive: 'expensive',
     Cheap: 'cheap'
 };
-input.addEventListener('input',function(){ 
-    clearList(ul); 
-    const productsToRender = availableProducts.filter(function(product){
+input.addEventListener('input',refreshProductsView);
+function filterByName(productList,searchValue){ 
+    if(!searchValue){
+        return availableProducts;
+    }
+    const productsToRender = productList.filter(function(product){
         productName =  product.name.toLowerCase();
         inptutValue =  input.value.toLowerCase();
         if(productName === inptutValue)     
             return true;                    
-    });           
-renderProducts(productsToRender);
-});
+    });
+    return productsToRender;
+    //clearList(ul);            
+//renderProducts(productsToRender);
+};
 // showing products that ships to country
-function searchByCountryName() {    
+function filterByCountryName(produtsList, countryName) { 
+    
+    if(!countryName){
+        return produtsList;
+    }
+    countryName = countryName.toLowerCase();
+    return produtsList.filter(product => {
+        for(let shippingCountry of product.shipsTo){
+            shippingCountry = shippingCountry.toLowerCase();
+            if(shippingCountry === countryName){
+                return true;
+            }                
+        }
+        return false;
+    })
+    /*   
     const selectedCountryName = selectCountry.value;
     productToDisplay = availableProducts.filter(product => {
       return product.shipsTo.some(shippingCountry => {
@@ -109,9 +130,9 @@ function searchByCountryName() {
       });
     });
     clearList(ul);
-    renderProducts(productToDisplay);
+    renderProducts(productToDisplay);*/
   }
-selectCountry.addEventListener("change", searchByCountryName);
+selectCountry.addEventListener("change", refreshProductsView);
 selectSort.addEventListener("change",sortProducts);
 
 // sort the products
@@ -129,4 +150,15 @@ function sortProducts() {
     renderProducts(sortName);
   }
 }
-renderProducts(availableProducts);
+function refreshProductsView(){
+    
+    const selectValue = selectCountry.value;
+    let filterProducts = filterByCountryName(availableProducts, selectValue);
+    filterProducts = filterByName(filterProducts,input.value);
+    console.log(filterProducts);
+    console.log(selectValue);
+    renderProducts(filterProducts);
+
+}
+//renderProducts(availableProducts);
+refreshProductsView()
