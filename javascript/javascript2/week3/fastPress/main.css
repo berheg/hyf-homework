@@ -63,4 +63,11 @@ body {
     text-justify: center;
     margin-left: 30%;
   }
+  #confetti,
+  #myConfetti{
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    z-index: 3;  
+  }
   
