@@ -11,7 +11,7 @@ function geoFindMe() {
     function success(position) {
       const latitude  = position.coords.latitude;
       const longitude = position.coords.longitude;
-      lat = `${latitude}`;
+      lat = latitude;
       long = longitude;
       status.textContent = '';
       mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
@@ -29,14 +29,19 @@ function geoFindMe() {
       navigator.geolocation.getCurrentPosition(success, error);
     }  
   
-  }
-  
-  //console.log(latitude);
-  document.querySelector('#find-me').addEventListener('click', geoFindMe);
-  let map;     
+  }  
+  document.querySelector('#find-me').addEventListener('click', geoFindMe);    
     function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 55.76, lng: 12.58},
+      const location = {
+        lat: 55.76,
+        long: 12.58
+      }
+      const map = new google.maps.Map(document.getElementById('map'), {
+        center: location,
         zoom: 8
       });
+      const marker = new google.maps.Marker({
+        position: location,
+        map: map
+      })
     }
