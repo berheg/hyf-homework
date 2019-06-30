@@ -20,7 +20,7 @@ let start = false;
 clickdisplay.innerHTML = 'Press S ';
 secondClickDisplay.innerHTML = 'Press L ';
 gameStarter.addEventListener('click',function(){
-    start = true;
+    start = true;    
     startGame();
 });
 restartBtn.addEventListener('click',function(){
@@ -56,12 +56,15 @@ function startGame(){
                     }                
                 });                       
             setTimeout(()=>{
+                remainder.innerHTML = ' Gameover!';
                 if(count > countTwo){
-                    countDisplay.innerHTML = 'You Win Congra!!!';                                                           
+                    countDisplay.innerHTML = 'You Win Congra!!!';                    
+                    //getConfetti(true);                                                       
                 }else if(count<countTwo){
-                    countTwoDisplay.innerHTML = 'You Win Congra!!!'; 
+                    countTwoDisplay.innerHTML = 'You Win Congra!!!';
+                    //getConfetti(false); 
                 }else{
-                    remainder.innerHTML = 'No one Wins';
+                    remainder.innerHTML += 'No one Wins';
                 }                
                 input.value = '';
                 timeout = true;                
