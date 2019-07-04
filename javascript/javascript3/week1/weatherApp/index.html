@@ -15,12 +15,20 @@
         <h1>POSITION LOCATOR</h1>
     </header>
     <main>
-        <button id = "find-me">Show my location</button><br/>
+        
         <p id = "status"></p>
-        <a id = "map-link" target="_blank"></a>  
-        <div id="map"></div>     
-        <script src="main.js"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-XvC47oZ336veOTWIAl4HQ6hBtg-N-18&callback=initMap"
-        ></script>
+        <a id = "map-link" target="_blank"></a>
+        <label for="input">Enter City</label> 
+        <input type="text" class="city"> 
+        <button id = "find-me">Show Tempurature</button><br/>           
+        <ul>
+            <h2></h2>
+            <li class="currentTmp"></li>
+        </ul>
+        <section class="icon">
+            <img src="icons/unknown.png" alt="">
+        </section>
+        <div id="map"></div> 
+        <script src="main.js"></script>       
     </main>
 </html>
