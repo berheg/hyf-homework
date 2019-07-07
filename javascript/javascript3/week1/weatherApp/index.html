@@ -9,26 +9,56 @@
         <link rel="stylesheet" href="main.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-        <title>geolocator</title>
+        <title>Weather</title>
     </head>
     <header>
-        <h1>POSITION LOCATOR</h1>
+        <h1>City Weather Condition</h1>
     </header>
     <main>
-        
+        <!--The right side weather frame div-->
+        <div class="container">
+            <div class="app-title">
+                <p>Current Location</p>
+                <p class="currentCity"></p>
+            </div>
+            <div class="notification"> </div>
+            <div class="weather-container">
+                <div class="weather-icon">
+                    <img src="icons/unknown.png" alt="">
+                </div>
+                <div class="temperature-value">
+                    <p>- °<span>C</span></p>
+                </div>
+                <div class="temperature-description">
+                    <p> - </p>
+                </div>
+                <div class="location">
+                    <p>-</p>
+                    <p id="wind"></p>
+                    <p id="sunrise"></p>
+                    <p id="sunset"></p>
+                </div>
+            </div>
+        </div>
         <p id = "status"></p>
         <a id = "map-link" target="_blank"></a>
         <label for="input">Enter City</label> 
         <input type="text" class="city"> 
-        <button id = "find-me">Show Tempurature</button><br/>           
-        <ul>
-            <h2></h2>
-            <li class="currentTmp"></li>
-        </ul>
+        <button id = "find-me">Search from server</button><br/> 
+        <button id="localSearchBtn">Search Local</button>
+        <button id="saveDataBtn">Save Data</button>
+        <h2></h2>
+        <p class="currentTmp"></p>
         <section class="icon">
-            <img src="icons/unknown.png" alt="">
+            <img  alt="">            
         </section>
+        <p class="description"></p>
+        <p class="wind" ></p>
+        <p class="sunrise"></p>
+        <p class="sunset"></p>
+        <h3 id="savedLocal"></h3>
         <div id="map"></div> 
+        
         <script src="main.js"></script>       
     </main>
 </html>
