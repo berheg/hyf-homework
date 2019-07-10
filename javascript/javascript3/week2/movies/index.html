@@ -12,12 +12,19 @@
   </head>
 
   <body>
-    <div id="app" class="container">      
-      <h1 id="ans-title">Movies</h1>
-      <section>
-          <p class="notice"></p>
-      </section>      
-      
+      <header>Sample Result Of movies</header>
+    <div class="resultDispla"> 
+      <select name="resultDisplay">
+          <option value="none">-----------------------Select to see sample results---------------</option>
+          
+          <option value="titleBadRatingMovies">Sample of movies title with bad rating:</option>
+          <option value="givenYear">Number of bad movies since year 2000:</option>         
+          <option value="badRating">The number of Movies with Bad rating:</option>
+      </select>     
+      <section class="display">
+          <p class="display"></p>
+          <ul></ul>
+      </section>       
     </div>
     <script src="main.js"></script>
   </body>
