@@ -4,11 +4,26 @@ fetch(moviesApi)
     .then(response => response.json())
     .then(json =>{
         console.log(json);
-        getBadMovies(json);
-        
-    }); 
+        //getBadMovies(json);
+        const badMovies = json.
+        filter(obj => obj.rating < 4);
+        return badMovies;
+    })
+    .then(result =>{
+        console.log(result);
+        const movies = result.filter(obj => obj.year >= 2000);
+        console.log(movies);
+        return movies;
+    })
+    .then(result =>{
+        console.log(result);
+        const badMoviesTitle = result.map(result.title);
+        return badMoviesTitle;
+    })
+    .then(result => console.log(result))
+    .catch(err => console.log(err)); 
  
-function getBadMovies(arrayOfMovies){
+/*function getBadMovies(arrayOfMovies){
         
     const badMovies = arrayOfMovies.
         filter(obj => obj.rating < 4);    
@@ -21,4 +36,4 @@ function getTitlesBadMovies(arrayMovies){
         map(obj => obj.title);
     console.log(titlesBadMovies);
     return titlesBadMovies;
-}   
+}*/   
