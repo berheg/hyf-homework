@@ -10,7 +10,7 @@ let notice = document.querySelector('p.notice');
 const key = "Xe7GmIA81Tx5vLjHznMmWwJxuWxUQYb9";
 //urlArray is used to save the Json data object from api fetch
 let urlArray = [];
-//Json object is fetch and the data is passed to showImages function
+//Json object is fetch and the data is passed to showImages function after 3seconds
 function getImage() {
   if(searchInput.value===''){
     notice.innerHTML = 'Please insert word!!!!';  
@@ -21,12 +21,14 @@ function getImage() {
     fetch(api)
       .then(resp => resp.json())
       .then(json => {
-        //json object is passed to be displayed and manupilate as we want
+       //setTimeout is used to wait 3 seconds before display result 
        setTimeout(() => {
+         //json object is passed to be displayed and manupilate as we want
         showImages(json);
         console.log(json);               
         console.log(json.data[0].images.fixed_height.url);
        },3000);
+       //shows the above code in setTimeout excutes after 3 seconds of this code
        notice.innerHTML = 'waiting 3seconds!';         
       });
   }    
