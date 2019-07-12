@@ -14,6 +14,5 @@ function greenBallMove(){
         moveElement(greenBox,{x:20+i,y:20});
     }
 }
-redBallMove();
-blueBallMove();
-greenBallMove();
+Promise.all(redBallMove(),blueBallMove(),greenBallMove())
+.then(console.log('Done'));
