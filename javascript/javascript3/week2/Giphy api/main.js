@@ -30,7 +30,8 @@ function getImage() {
        },3000);
        //shows the above code in setTimeout excutes after 3 seconds of this code
        notice.innerHTML = 'waiting 3seconds!';         
-      });
+      })
+      .catch(console.error(err));     
   }    
 } 
 //remove innetHtml of paragraph notice
