@@ -1,18 +1,52 @@
-
+const positions = {
+    top: 20,
+    botton: 300,
+    left: 400,
+    right: 20
+  };
+  const btn = document.querySelector('button.pageChange');
+  const target = {
+    red: {
+      x: positions.right - parseInt(redBox.style.left),
+      y: positions.botton - parseInt(redBox.style.top)
+    },
+    blue: {
+      x: positions.left - parseInt(blueBox.style.left),
+      y: positions.botton - parseInt(blueBox.style.top)
+    },
+    green: {
+      x: positions.left - parseInt(greenBox.style.left),
+      y: positions.top - parseInt(greenBox.style.top)
+    }
+  };
 function redBallMove(){
-    for(let i = 20;i<=290; i +=10){
-        moveElement(redBox,{x:20,y:20+i});
-    }
+    return moveElement(redBox,target.red);  
 }
-function blueBallMove(){
-    for(let i = 20,j=20;i<=290,j<=390; i+=10 ,j +=10){
-        moveElement(blueBox,{x:20+j,y:20+i});
-    }
+ function blueBallMove(){
+    
+    return moveElement( blueBox,target.blue)
+       
 }
-function greenBallMove(){
-    for(let i = 20;i<=390; i +=10){
-        moveElement(greenBox,{x:20+i,y:20});
-    }
+ function greenBallMove(){
+    
+    return moveElement(greenBox,target.green);
+   
 }
-Promise.all(redBallMove(),blueBallMove(),greenBallMove())
-.then(console.log('Done'));
+
+function translateAllAtOnce(){
+    //all at once
+    
+    Promise.all([redBallMove(),blueBallMove(),greenBallMove()])
+
+    .then(() => {
+      console.log("All circles have moved");
+      
+    });
+    setTimeout(() => {
+      document.location.reload(true);
+    }, 2500); 
+}
+translateAllAtOnce();    
+    
+   
+    
