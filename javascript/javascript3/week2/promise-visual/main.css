@@ -60,6 +60,14 @@ ul.targets li:nth-child(3) {
 }
 span {
     display: none;
+    position: absolute;
+    z-index: -2;
+}
+a{
+  float: left;
+  margin-left: 200px;
+  margin-top: 400px;
+  text-decoration: none;
 }
 
 @keyframes bounceIn {
@@ -105,8 +113,9 @@ span.shown {
     animation-duration: 0.75s;
     animation-name: bounceIn;
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 30%;
+    left: 20%;
     transform: translate(-50%, -50%);
     font-size: 5rem;
+    background-color: chocolate;
 }
