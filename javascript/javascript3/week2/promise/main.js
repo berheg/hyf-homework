@@ -23,15 +23,17 @@ function getCurrentLocation() {
           code: err.code,
           message: err.message
         };
-        reject(error);
+        reject(error.message);
       }
     );
   });
 }
+//getCurrentLocation as promise function
 getCurrentLocation()
   .then(position => {
     // called when the users position is found    
     console.log(position);
+    //leaflet as map style and given latitude and longitude properties
     const mymap = L.map('mymap').setView([position.latitude, position.longitude], 15);
     const attribution =
     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
@@ -42,5 +44,8 @@ getCurrentLocation()
   })
   .catch(error => {
     // called if there was an error getting the users location
-    console.log(error.message);
+    const p = document.createElement('p');
+    p.innerHTML = error + '\n\n refresh the page and allow to see the location';
+    document.body.appendChild(p);
+    console.log(error);
   });
