@@ -15,67 +15,67 @@ const localSearchBtn = document.querySelector('#localSearchBtn');
 const saveDataBtn = document.querySelector('#saveDataBtn');
 const savedLocal = document.querySelector('#savedLocal');
 let data = {};
-//
+//getCityWeather check input value and retrieve data from api
 function getCityWeather() {    
     mapLink.href = '';
     mapLink.textContent = ''; 
     if(!inputCcheck()){
-    function success() {        
-        input.addEventListener('keyup',()=>{
-            h2.innerText = 'Locating…';
-            parCurrentTemp.innerHTML = '';
-            icon.innerHTML = '';
-            parDescription.innerHTML = '';
-            parSunrise.innerHTML = '';
-            parSunset.innerHTML = '';
-            parWind.innerHTML = '';
-            savedLocal.innerHTML = '';
-        });
-        const city = input.value; 
-        
-        const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=f1a35cc23798d7dcbfd21e71968ac4d6&units=metric`;
-        fetch(api)
-        .then(response => response.json())            
-        .then(json =>{
-            console.log(`${json}`);
-            if(`${json.code}`=== undefined){
-                h2.innerText = json.message;
-            }            
-            else{                
-                data = json;              
-                console.log(localStorage);
-                temp = Math.round(json.main.temp);
-                console.log(json);            
-                h2.innerText = `${city}`;
-                parCurrentTemp.innerHTML = temp + '°<span>C</span>';
-                weatherIcon = json.weather[0].icon;
-                icon.innerHTML = `<img src="icons/${weatherIcon}.png"/>`;
-                parDescription.innerHTML = json.weather[0].description;
-                
-                parWind.innerHTML = "Wind:" + json.wind.speed + "m/s";
-                parSunrise.innerHTML = "Sunrise:" +convertTime(json.sys.sunrise);
-                parSunset.innerHTML = "Sunset:" + convertTime(json.sys.sunset);
-                console.log(temp);
-                console.log(weatherIcon);
-                console.log(json.weather[0].description);
-                //console.log(json.weather[0].wind.speed);
-            }
+        function success() {        
+            input.addEventListener('keyup',()=>{
+                h2.innerText = 'Locating…';
+                parCurrentTemp.innerHTML = '';
+                icon.innerHTML = '';
+                parDescription.innerHTML = '';
+                parSunrise.innerHTML = '';
+                parSunset.innerHTML = '';
+                parWind.innerHTML = '';
+                savedLocal.innerHTML = '';
+            });
+            const city = input.value; 
             
-        });
+            const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=f1a35cc23798d7dcbfd21e71968ac4d6&units=metric`;
+            fetch(api)
+            .then(response => response.json())            
+            .then(json =>{
+                console.log(`${json}`);
+                if(`${json.code}`=== undefined){
+                    h2.innerText = json.message;
+                }            
+                else{                
+                    data = json;              
+                    console.log(localStorage);
+                    temp = Math.round(json.main.temp);
+                    console.log(json);            
+                    h2.innerText = `${city}`;
+                    parCurrentTemp.innerHTML = temp + '°<span>C</span>';
+                    weatherIcon = json.weather[0].icon;
+                    icon.innerHTML = `<img src="icons/${weatherIcon}.png"/>`;
+                    parDescription.innerHTML = json.weather[0].description;
+                    
+                    parWind.innerHTML = "Wind:" + json.wind.speed + "m/s";
+                    parSunrise.innerHTML = "Sunrise:" +convertTime(json.sys.sunrise);
+                    parSunset.innerHTML = "Sunset:" + convertTime(json.sys.sunset);
+                    console.log(temp);
+                    console.log(weatherIcon);
+                    console.log(json.weather[0].description);
+                    //console.log(json.weather[0].wind.speed);
+                }
+                
+            });
+            
+        } 
+        function error() {
+            status.textContent = 'Unable to retrieve your location';
+        }
         
-    } 
-    function error() {
-        status.textContent = 'Unable to retrieve your location';
-    }
-    
-    if (!navigator.geolocation) {
-    status.textContent = 'Geolocation is not supported by your browser';
-    } else {
-    //status.textContent = 'Locating…';
-    h2.innerText = 'Locating…';
-    navigator.geolocation.getCurrentPosition(success, error);
-    };
-}  
+        if (!navigator.geolocation) {
+        status.textContent = 'Geolocation is not supported by your browser';
+        } else {
+            //status.textContent = 'Locating…';
+            h2.innerText = 'Locating…';
+            navigator.geolocation.getCurrentPosition(success, error);
+        };
+    }  
 };
    
 document.querySelector('#find-me').addEventListener('click', getCityWeather); 
