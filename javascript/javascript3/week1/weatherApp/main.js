@@ -1,6 +1,6 @@
 //let lat;
 //let long;
-
+//From the input value of city using api fetch weather data and display the user
 const status = document.querySelector('#status');
 const mapLink = document.querySelector('#map-link');
 const parCurrentTemp = document.querySelector('p.currentTmp');
