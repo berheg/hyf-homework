@@ -17,7 +17,13 @@ function geoFindMe() {
         long = longitude;
         status.textContent = '';
         mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
-       mapLink.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`;           
+       mapLink.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`; 
+       const map = L.map('map').setView([latitude, longitude], 15);
+        const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+        const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        const tiles = L.tileLayer(tileUrl, { attribution });
+        tiles.addTo(map);
+        const marker = L.marker([latitude, longitude]).addTo(map);          
         const proxy = "https://cors-anywhere.herokuapp.com/";
         const api = `${proxy}https://api.darksky.net/forecast/9040d04db71bf14480d96f775d1d58da/${lat},${long}`;
         fetch(api)
@@ -46,17 +52,3 @@ function geoFindMe() {
 }  
 document.querySelector('#find-me').addEventListener('click', geoFindMe); 
   
-/*function initMap() {
-    const location = {
-        lat: 55.76,
-        long: 12.58
-    }
-    const map = new google.maps.Map(document.getElementById('map'), {
-        center: location,
-        zoom: 8
-    });
-    const marker = new google.maps.Marker({
-        position: location,
-        map: map
-    })
-}*/  
