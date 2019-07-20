@@ -19,6 +19,7 @@ let data = {};
 function getCityWeather() {    
     mapLink.href = '';
     mapLink.textContent = ''; 
+    savedLocal.innerHTML = '';
     if(!inputCcheck()){
         function success() {        
             input.addEventListener('keyup',()=>{
