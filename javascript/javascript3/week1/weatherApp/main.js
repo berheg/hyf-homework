@@ -46,7 +46,7 @@ function getCityWeather() {
                     data = json;              
                     console.log(localStorage);
                     temp = Math.round(json.main.temp);
-                    console.log(json);            
+                    console.log(json);                                
                     h2.innerText = `${city}`;
                     parCurrentTemp.innerHTML = temp + '°<span>C</span>';
                     weatherIcon = json.weather[0].icon;
@@ -60,6 +60,8 @@ function getCityWeather() {
                     console.log(weatherIcon);
                     console.log(json.weather[0].description);
                     //console.log(json.weather[0].wind.speed);
+                    //if saveDataBtn is clicked the data for the given city is saved
+                    saveDataBtn.addEventListener('click',()=> saveDataLocal(input.value,data));
                 }
                 
             });
@@ -93,8 +95,6 @@ localSearchBtn.addEventListener('click', ()=>{
     }
     
 });
-saveDataBtn.addEventListener('click',()=> saveDataLocal(data));
-
 function localSearch(city){
     const fs = require('fs');
     if(!inputCcheck()){
@@ -109,8 +109,8 @@ function localSearch(city){
     }
     
 }
-function saveDataLocal(data){
-    localStorage.setItem("city",JSON.stringify(data));
+function saveDataLocal(city,data){
+    localStorage.setItem(city,JSON.stringify(data));
     savedLocal.innerHTML = 'Successfully Saved to Localstorage';
 }
 function removeNotice(){
