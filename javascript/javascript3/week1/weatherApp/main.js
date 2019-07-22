@@ -89,24 +89,19 @@ localSearchBtn.addEventListener('click', ()=>{
         if(i===null){
             h2.innerText = 'City was not saved!';
         }else{
-            displayWeatherFromLocal(i);
+            displayWeatherFromLocal();
         }
         
     }
     
 });
 function localSearch(city){
-    const fs = require('fs');
     if(!inputCcheck()){
-        const data = fs.readFileSync('citiesWeather.json');
-        const weatherData = JSON.parse(data);
-        for(i=0; i < weatherData.cities.length;i++){
-            if(weather.cities[i].name===city){
-                return i 
-            }
-        }
-        return null;
-    }
+        const dataLocal = JSON.parse(localStorage.getItem(city));
+        if(dataLocal)
+            return dataLocal;
+    }else
+        return 
     
 }
 function saveDataLocal(city,data){
@@ -125,11 +120,14 @@ function inputCcheck(){
 }
 function displayWeatherFromLocal(){
     console.log(localStorage);
-    if(city.main.name = input.value){
-        temp = Math.round(localStorage.getItem(city.temp));              
-        h2.innerText = `${localStorage.getItem.name}`;
+    const data = localSearch(input.value);
+    console.log(data);
+    if(data){
+        const city = input.value;
+        temp = city.temp;              
+        h2.innerText = `${city}`;
         parCurrentTemp.innerHTML = temp + '°<span>C</span>';
-        weatherIcon = weatherData.cities[num].icon;
+        weatherIcon = city.weather[0].icon;
         icon.innerHTML = `<img src="icons/${weatherIcon}.png"/>`;
         parDescription.innerHTML = weatherData.cities[num].description;
     }else{
