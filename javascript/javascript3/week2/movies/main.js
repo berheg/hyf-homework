@@ -22,7 +22,7 @@ fetch(moviesApi)
         console.log(badMoviesTitle);
         return badMoviesTitle;
     })
-    .then(result => console.log(result))
+    //.then(result => console.log(result))
     .catch(err => console.log(err)); 
  
     //function used to display samples in list
