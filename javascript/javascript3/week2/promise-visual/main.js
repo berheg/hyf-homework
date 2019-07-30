@@ -42,7 +42,8 @@ function translateAllAtOnce(){
       
     });
     setTimeout(() => {
-     document.location.reload(false);
+     //document.location.reload(false);
+     location.replace("index.html");
     }, 2500); 
 }
 //translateAllAtOnce(); 
