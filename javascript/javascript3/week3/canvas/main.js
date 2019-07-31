@@ -51,5 +51,5 @@ function drawCircle(){
 const c1 = new Circle(50, 50, 20, 0, 2 * Math.PI, '#3370d4');*/
 //c1.draw;
 drawCircle();
-
+let myCircle = window.setInterval(drawCircle(),500);
 
