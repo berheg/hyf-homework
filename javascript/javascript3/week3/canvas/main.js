@@ -15,7 +15,7 @@ function drawCircle(){
     c.stroke();
 }
 
-/*class Circle{
+class Circle{
     constructor(x, y, r, startAngle, endAngle, fillColor){
         this.x = x;
         this.y = y;
@@ -29,7 +29,7 @@ function drawCircle(){
         //c.clearRect(0, 0, innerWidth, innerHeight);
         c.beginPath();
         c.fillStyle = "#3370d4";
-        c.arc(this.x, this.y, this.radius, this.startAngle, this.endAngle, false);
+        c.arc(this.x, this.y, this.r, this.startAngle, this.endAngle, false);
         c.fill();
         c.strokeStyle = this.fillColor;
         c.stroke();        
@@ -41,15 +41,15 @@ function drawCircle(){
         //c.clearRect(0, 0, innerWidth, innerHeight);
         c.beginPath();
         c.fillStyle = "#3370d4";
-        c.arc(this.x, this.y, this.radius, this.startAngle, this.endAngle, false);
+        c.arc(this.x, this.y, this.r, this.startAngle, this.endAngle, false);
         c.fill();
         c.strokeStyle = this.fillColor;
         c.stroke();
     }   
 }
 
-const c1 = new Circle(50, 50, 20, 0, 2 * Math.PI, '#3370d4');*/
-//c1.draw;
-drawCircle();
-let myCircle = window.setInterval(drawCircle(),500);
+const c1 = new Circle(50, 50, 20, 0, 2 * Math.PI, '#3370d4');
+c1.draw();
+/*drawCircle();
+let myCircle = window.setInterval(drawCircle(),500);*/
 
