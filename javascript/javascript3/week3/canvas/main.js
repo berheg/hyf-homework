@@ -1,8 +1,5 @@
-const canvas = document.querySelector('canvas');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-const c = canvas.getContext('2d');
-//c.clearRect(0, 0, innerWidth, innerHeight);   
+
+ const canvas = document.querySelector('canvas');  
 //Draw Arc or Circle
 function drawCircle(){
     let x =Math.random()*window.innerWidth;
@@ -23,7 +20,11 @@ class Circle{
         this.endAngle = endAngle;
         this.fillColor = fillColor;               
     }
-    draw(){        
+    draw(){         
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const c = canvas.getContext('2d');
+        c.clearRect(0, 0, innerWidth, innerHeight);      
         c.beginPath();
         c.fillStyle = "#3370d4";
         c.arc(this.x, this.y, this.r, this.startAngle, this.endAngle, false);
@@ -32,11 +33,12 @@ class Circle{
         c.stroke();
     }   
 }
-const c1 = new Circle(50, 50, 20, 0, 2 * Math.PI, '#3370d4');
+let c1 = new Circle(50, 50, 20, 0, 2 * Math.PI, '#3370d4');
+
 c1.draw();
-let myC1 = window.setInterval(c1.draw(),500);
+/*let myC1 = window.setInterval(c1.draw(),500);
 let x =Math.random()*window.innerWidth;
 let y = Math.random()* window.innerHeight;
-const c2 = new Circle(x, y, 20, 0,2 * Math.PI, '#3370d4');
+let c2 = new Circle(x, y, 20, 0,2 * Math.PI, '#3370d4');
 c2.draw();
-window.setInterval(c2.draw(),500);
+window.setInterval(c2.draw(),500);*/
