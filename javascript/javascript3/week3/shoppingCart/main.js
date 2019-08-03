@@ -3,6 +3,7 @@ const searchBtn = document.querySelector('button.searchBtn');
 const usernameP = document.querySelector('#username');
 const inputProduct = document.querySelector('input.product');
 let username;
+let userChecker = false; 
 class Product {
   constructor(name, price, description) {
     this.name = name;
@@ -39,7 +40,8 @@ class ShoppingCart {
       total += priceProduct;
     }
     return total;
-  }    
+  } 
+     
   renderProducts() {    
     let total = 0;
     const ul = document.querySelector("ul.productsList");
@@ -59,7 +61,7 @@ class ShoppingCart {
       const cart = document.querySelector('section.cart > ul');
       const listCart = document.createElement('li');
       const divCart = document.querySelector('div.total');
-      let userChecker = false;     
+          
       btn.addEventListener('click',function(){
         clearList(listCart);
         if(!userChecker){
@@ -107,8 +109,7 @@ function clearList(parent){
   while(parent.firstChild){
       parent.removeChild(parent.firstChild);
   }
-}
-   
+}   
 const flatscreen = new Product("flat-screen", 5000, 'Samsung 49" QLED smart ');
 const flatscreen2 = new Product("flat-screen2", 5000, 'Samsung TV UHD LED 65" ');
 const hpLaptop = new Product("hp-Laptop", 4000, 'HP 14-dk0002no 14" ');
