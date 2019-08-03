@@ -1,6 +1,7 @@
 const addBtn = document.querySelector('button.addBtn');
 const searchBtn = document.querySelector('button.searchBtn');
-const usernameP = document.querySelector('#username')
+const usernameP = document.querySelector('#username');
+const inputProduct = document.querySelector('input.product');
 let username;
 class Product {
   constructor(name, price, description) {
@@ -120,12 +121,15 @@ console.log(shoppingCart.products);
 shoppingCart.getUser();
 console.log(username);
 shoppingCart.renderProducts();
-addBtn.addEventListener('click', addProduct);
+addBtn.addEventListener('click', addToProduct);
 searchBtn.addEventListener('click', addShoppingCart);
-function addProduct(){
-  const inputProduct = document.querySelector('input#product');
-  if(inputProduct.innerHTML = ''){
+function addToProduct(){
+  //const inputProduct = document.querySelector('input.product');
+  console.log(inputProduct.Value);
+  if(inputProduct.Value === ''){
     alert("Please fill all three input")
+  }else{
+
   }
 }
 //forming element with the className
