@@ -10,6 +10,7 @@ function fetchEmojis(){
 	.then(json => {
 		listOfEmojis = json;
 		console.log(listOfEmojis);
+		getOptionTagForEachCategory();
 		renderHTML(listOfEmojis);
 	})
 }
@@ -61,5 +62,13 @@ function getEmojisByCategory(){
 	else
 		listOfEmojisPerCategory = searchEmoji(categorySelect.value, 'category');
 	return listOfEmojisPerCategory;
+}
+function getOptionTagForEachCategory(){
+	const categoryLists = getCategoryLists();
+	categoryLists.forEach(category => {
+		const optionCategory = document.createElement('option');
+		optionCategory.innerHTML = category;
+		categorySelect.appendChild(optionCategory);
+	});
 }
 fetchEmojis();
