@@ -1,5 +1,10 @@
 body {
-    font-family: 'Montserrat', sans-serif;
+	font-family: 'Montserrat', sans-serif; 
+	text-align: center; 
+	align-items: center;
+}
+main{
+	width: 80%;	
 }
 ul{
 	list-style-type: none;
@@ -31,4 +36,14 @@ ul{
 
 .emojiName{
 	font-size: 12px;
+}
+.listOfEmoji,
+.favoriteList {
+  display: flex;
+  width: 82%;
+  padding: 30px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+  height: 50%;
+  overflow: auto;
+  margin-bottom: 2rem;
 }
