@@ -37,10 +37,12 @@ function renderHTML(listOfEmojis){
 
 fetchEmojis();
 
-searchField.addEventListener("keyup",() => {
-	const newListOfEmojis = listOfEmojis.filter((emoji) => {
-		return emoji.name.toLowerCase().includes(searchField.value.toLowerCase());
+searchField.addEventListener("keyup",() => 
+	searchEmoji(searchField.value));
+function searchEmoji(searchValue){
+    const newListOfEmojis = listOfEmojis.filter((emoji) => {
+		return emoji.name.toLowerCase().includes(searchValue.toLowerCase());
 	});
 	renderHTML(newListOfEmojis);
-})
+}
 
