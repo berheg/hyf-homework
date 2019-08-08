@@ -1,16 +1,19 @@
 console.log("Script loaded");
 const searchField = document.getElementById("searchField");
 const ulTag = document.querySelector("ul.container");
-const ulFavoriteList = document.querySelector(' ul.favoriteList');
+const ulFavoriteList = document.querySelector('ul.favoriteUl');
 const categorySelect = document.querySelector('select#selectCategories');
 let listOfEmojis;
+let favoriteEmojis = [];
 function fetchEmojis(){
 	fetch("https://raw.githubusercontent.com/amio/emoji.json/master/emoji.json")
 	.then(response => response.json())
 	.then(json => {
 		listOfEmojis = json;
+		loadingLocalstorage();
 		console.log(listOfEmojis);
 		getOptionTagForEachCategory();
+		renderHTML(favoriteEmojis, ulFavoriteList);
 		renderHTML(listOfEmojis);
 	})
 }
@@ -29,8 +32,7 @@ function renderHTML(listOfEmojis, ulList = ulTag){
 		liTag.appendChild(nameSpan);
 		//save to clipboard
 		liTag.addEventListener('click', () => {
-			writeToClipboard(emoji.char);
-			saveToFavorite(emoji);
+			emojiClickEventHandler(emoji);
 		})
 
 		ulList.appendChild(liTag);
@@ -75,7 +77,27 @@ categorySelect.addEventListener('change', () => {
 	console.log(categorySelect.value);
 	searchField.value = categorySelect.value;
 	console.log(getEmojisByCategory());		
-})
+});
+function addToFavorite(emoji){
+	favoriteEmojis.unshift(emoji);
+	console.log(favoriteEmojis);
+	favoriteEmojis = favoriteEmojis.filter((emoji, index) => {
+		return favoriteEmojis.indexOf(emoji) == index;
+	});
+
+	localStorage.setItem("favoriteEmojis", JSON.stringify(favoriteEmojis));
+	renderHTML(favoriteEmojis, ulFavoriteList);
+}
+function emojiClickEventHandler(emoji){
+	writeToClipboard(emoji.char);
+	addToFavorite(emoji);
+}
+//loading favorite list
+function loadingLocalstorage(){	
+	favoriteEmojis = JSON.parse(
+        localStorage.getItem("favoriteEmojis") || "[]"
+      );
+}
 searchField.addEventListener("keyup",() => searchEmoji(searchField.value,'name'));
 searchField.addEventListener("focus",() => searchField.value = '');
 fetchEmojis();
