@@ -114,3 +114,6 @@ section.cart ul>li:nth-child(odd) {
     flex-direction: column;
     list-style: none;
 }
+.searchProductList>li:hover{
+    background-color: rgb(16, 185, 30);
+}
