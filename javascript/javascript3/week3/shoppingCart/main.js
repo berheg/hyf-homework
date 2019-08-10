@@ -52,8 +52,9 @@ class ShoppingCart {
     const span = document.createElement('span.total'); 
     for (let product of this.products)  {    
       const li = document.createElement("li");  
-      li.innerHTML = product.name;  
-      li.appendChild(creatListsInsideUl(product));         
+      //li.innerHTML = product.name;  
+      li.appendChild(creatListsInsideUl(product));
+      //creatListsInsideUl(product);         
       const btn = document.createElement('button');
       const cancelBtn = document.createElement('button');
       console.log(product.name);
@@ -133,8 +134,8 @@ addBtn.addEventListener('click', addToProduct);
 //searchBtn.addEventListener('click', addShoppingCart);
 function addToProduct(){
   //const inputProduct = document.querySelector('input.product');
-  console.log(inputProduct.Value);
-  if(inputProduct.Value === ''){
+  console.log(inputProduct.value);
+  if(inputProduct.value === ''){
     alert("Please fill all three input")
   }else{
 
@@ -156,9 +157,10 @@ function creatListsInsideUl(product) {
   return ul ;     
 };
 function addShoppingCart(product){
-  const ul = document.querySelector("section.cart > ul");    
+  /*const ul = document.querySelector("section.cart > ul");    
     const li = document.createElement("li");
-    li.appendChild(creatListsInsideUl(product)) ;
+    li.appendChild(creatListsInsideUl(product)) ;*/
+    creatListsInsideUl(product);
    
 }
 function creatUlShippingCart(productList){
@@ -174,6 +176,7 @@ function creatUlShippingCart(productList){
 searchInput.addEventListener('keyup',inputEventHandler);
 function inputEventHandler(){
   selectListDiv.style.zIndex = 8;
+  selectProductList.innerHTML = '';
   const listToSelect = searchProductList(searchInput.value);
   for(let product of listToSelect){
     const listSelect = document.createElement('li');
@@ -181,6 +184,11 @@ function inputEventHandler(){
     selectProductList.appendChild(listSelect);
   }
 }
+searchInput.addEventListener('blur', () =>{
+  searchInput.value = '';
+  selectListDiv.style.zIndex = -2;
+  
+});
 function searchProductList(searchKey){
   console.log(productLists);
   const searchedList = productLists.filter((product) =>{
