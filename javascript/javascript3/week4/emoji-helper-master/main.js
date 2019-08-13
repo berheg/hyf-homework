@@ -89,16 +89,18 @@ categorySelect.addEventListener('change', () => {
 	searchField.value = categorySelect.value;
 	console.log(getEmojisByCategory());		
 });
+//add emoji to favoriteEmojis array 
 function addToFavorite(emoji){
 	favoriteEmojis.unshift(emoji);
 	console.log(favoriteEmojis);
 	favoriteEmojis = favoriteEmojis.filter((emoji, index) => {
 		return favoriteEmojis.indexOf(emoji) == index;
 	});
-
+	//saving favoriteEmojis array to localstorage
 	localStorage.setItem("favoriteEmojis", JSON.stringify(favoriteEmojis));
 	renderHTML(favoriteEmojis, ulFavoriteList);
 }
+//emoji click event handler
 function emojiClickEventHandler(emoji){
 	writeToClipboard(emoji.char);
 	addToFavorite(emoji);
@@ -109,6 +111,8 @@ function loadingLocalstorage(){
         localStorage.getItem("favoriteEmojis") || "[]"
       );
 }
+//searchField  keyup event listener
 searchField.addEventListener("keyup",() => searchEmoji(searchField.value,'name'));
+//searchField focus event listener
 searchField.addEventListener("focus",() => searchField.value = '');
 fetchEmojis();
