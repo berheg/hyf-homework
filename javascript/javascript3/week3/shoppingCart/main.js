@@ -5,6 +5,9 @@ const inputProduct = document.querySelector('input.product');
 const selectProductList = document.querySelector('ul.searchProductList');
 const searchInput = document.querySelector('input.searchInput');
 const selectListDiv = document.querySelector('div.searchList');
+const productName = document.querySelector('input.product');
+const productPrice = document.querySelector('input.price');
+const ProductDescription = document.querySelector('input.description');
 let username;
 let userChecker = false; 
 let productLists = [];
@@ -138,7 +141,11 @@ function addToProduct(){
   if(inputProduct.value === ''){
     alert("Please fill all three input")
   }else{
-
+    const newProduct = new Product(productName.value, productPrice.value, ProductDescription.value); 
+    addProductLists(newProduct);
+    console.log(productLists);
+    const newShoppingCart = new ShoppingCart;
+    newShoppingCart.renderProducts();
   }
 }
 //forming element with the className
