@@ -8,44 +8,43 @@ const selectListDiv = document.querySelector('div.searchList');
 let username;
 let userChecker = false; 
 let productLists = [];
+//Product class defination
 class Product {
   constructor(name, price, description) {
     this.name = name;
     this.price = price;
     this.description = description;
   }    
-} 
+}
+//ShoppingCart class definition 
 class ShoppingCart {
   constructor(products) {
     this.products = products;
   }
-
+  // add product to shopping cart product list
   addProduct(product) {
-    // Implement functionality here
     this.products.push(product);
   }
-
+  //removing product from shopping cart
   removeProduct(product) {
-    // Implement functionality here
     const removeIndex = this.products.indexOf(product);
     this.products.splice(removeIndex, 1);
   }
-
+  //search product from shopping cart products list
   searchProduct(productName) {
-    // Implement functionality here
     return this.products.filter((product) => {
       return product.name === productName.name;
     })
-  }  
-  getTotal() {
-    // Implement functionality here    
+  }
+  // sum up all products in shopping cart  
+  getTotal() {        
     for (let product of this.products) {
       const priceProduct = parseInt(product.price);
       total += priceProduct;
     }
     return total;
   } 
-     
+  // render products available to be sold  
   renderProducts() {    
     let total = 0;
     const ul = document.querySelector("ul.productsList");
@@ -94,8 +93,8 @@ class ShoppingCart {
       });
     };
   };
-  getUser() {
-    // Implement functionality here    
+  // fetch user name from given API with random user number
+  getUser() {        
     const min = 1;
     const max = 10;
     const userNumber = Math.floor (Math.random () * (max - min)) + min;
@@ -109,7 +108,8 @@ class ShoppingCart {
       usernameP.innerHTML = 'No';
     });
   }
-} 
+}
+//clear list from display 
 function clearList(parent){
   while(parent.firstChild){
       parent.removeChild(parent.firstChild);
@@ -156,6 +156,7 @@ function creatListsInsideUl(product) {
       ul.appendChild(creatElementWithClassName('li', 'rating', product.description));
   return ul ;     
 };
+//add product to shopping cart
 function addShoppingCart(product){
   /*const ul = document.querySelector("section.cart > ul");    
     const li = document.createElement("li");
@@ -174,6 +175,7 @@ function creatUlShippingCart(productList){
 };
 //searchBtn.addEventListener('keyup',inputEventHandler);
 searchInput.addEventListener('keyup',inputEventHandler);
+//search input keyup handler
 function inputEventHandler(){
   selectListDiv.style.zIndex = 8;
   selectProductList.innerHTML = '';
@@ -184,11 +186,13 @@ function inputEventHandler(){
     selectProductList.appendChild(listSelect);
   }
 }
+//search input blur event handler
 searchInput.addEventListener('blur', () =>{
   searchInput.value = '';
   selectListDiv.style.zIndex = -2;
   
 });
+//search product lists with searchkey
 function searchProductList(searchKey){
   console.log(productLists);
   const searchedList = productLists.filter((product) =>{
@@ -196,6 +200,7 @@ function searchProductList(searchKey){
   console.log(searchedList);
   return searchedList;
 }
+//add products to available product lists
 function addProductLists(product){
   productLists.push(product);
 }
