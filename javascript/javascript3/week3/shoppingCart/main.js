@@ -143,9 +143,7 @@ function addToProduct(){
   }else{
     const newProduct = new Product(productName.value, productPrice.value, ProductDescription.value); 
     addProductLists(newProduct);
-    console.log(productLists);
-    const newShoppingCart = new ShoppingCart;
-    newShoppingCart.renderProducts();
+    console.log(productLists);    
   }
 }
 //forming element with the className
