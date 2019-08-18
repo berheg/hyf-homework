@@ -38,17 +38,17 @@
 8.Get the title and status (as text) of all tasks
 	SELECT task.title, status.name  
     	FROM task 
-	left JOIN status ON task.status_id = status.id;
+	INNER JOIN status ON task.status_id = status.id;
 
 9.Get the name of each status, along with a count of how many tasks have that status
 	SELECT status.name as statusName, count(task.status_id) As countOfTasks 
     	FROM task 
-	Left JOIN status ON task.status_id = status.id
+	INNER JOIN status ON task.status_id = status.id
 	GROUP BY statusName;
 
 10.Get the names of all statuses, sorted by the status with most tasks first
 	SELECT status.name AS statusName, count(task.status_id) As countOfTasks 
 	FROM task 
-	Left JOIN status ON task.status_id = status.id
+	INNER JOIN status ON task.status_id = status.id
 	GROUP BY statusName
 	ORDER BY countOfTasks DESC
