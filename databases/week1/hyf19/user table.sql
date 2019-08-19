@@ -1,0 +1,1 @@
+select task.title, user.name, status.name from status inner join task on task.status_id = name.status.id
