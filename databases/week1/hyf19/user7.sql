@@ -1,0 +1,1 @@
+select user_id, count(id) as myCount from task group by user_id having mycount > 2
