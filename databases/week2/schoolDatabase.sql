@@ -5,8 +5,8 @@ use school;
 create table `class` (
 `id` int(10) unsigned not null auto_increment,
 `name` varchar(180) not null,
-`begins (date)` date not null,
-`ends (date)` date not null,
+`begins` date not null,
+`ends ` date not null,
 primary key (`id`)
 )  engine=innodb default charset=utf8mb4 collate=utf8mb4_unicode_ci;
 -- CREATE TABLE Student: with the columns: id, name, email, phone, class_id (foreign key)
