@@ -5,7 +5,7 @@ const mysql = require('mysql');
 const db = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
-    password : '123456',
+    password : 'Hailu/423103',
     database : 'hyf19'    
 });
 
@@ -70,6 +70,15 @@ const addNewTask = function(title, description, created, updated, dueDate, statu
  app.get('/updatepost/:id', (req, res) => {
      sqlQuery(deleteTask(2));
  });
+ // Select posts
+app.get('/gettask', (req, res) => {
+    let sql = 'SELECT * FROM task';
+    let query = db.query(sql, (err, results) => {
+        if(err) throw err;
+        console.log(results);
+        res.send('Posts fetched...');
+    });
+});
  app.listen('3000', () => {
     console.log('Server started on port 3000');
 });
