@@ -5,7 +5,7 @@ const mysql = require('mysql');
 const db = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
-    password : '123456',
+    password : 'Hailu/423103',
     database : 'hyf19'    
 });
 
@@ -42,9 +42,9 @@ const addNewTask = function(title, description, created, updated, dueDate, statu
  };
  
  const changeTaskStatus = function(taskID, newStatus) {
-     const sql = `update task inner join status on status.id = tassk.status_id ` + 
+     const sql = `update task inner join status on status.name = '${newStatus}' ` + 
                  `set task.status_id = status.id ` + 
-                 `where status.name = '${newStatus}' and task.id = '${taskID}'`;
+                 `where task.id = ${taskID}`;
      return sql;
  };
  
@@ -84,6 +84,13 @@ app.get('/addnewtask', (req, res) => {
         if(err) throw err;
         console.log(result);
         res.send(`Post inserted...`);
+    });
+});
+app.get('/changetaskstatus', (req, res) => {
+    let query = db.query(changeTaskStatus(1,'Not started'), (err, result) => {
+        if(err) throw err;
+        console.log(result);
+        res.send(`Task Status Changed...`);
     });
 });
  app.listen('3000', () => {
