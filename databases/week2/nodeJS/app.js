@@ -21,7 +21,7 @@ const app = express();
 const addNewTask = function(title, description, created, updated, dueDate, statusID, userID) {
     const sql = `insert into task ` +
                 `(title, description, created, updated, due_date, status_id, user_id) ` +
-                `values ('${title}', '${description}', '${created}', '${updated}', '${due_date}', '${status_id}', '${user_id}')` ;
+                `values ('${title}', '${description}', '${created}', '${updated}', '${dueDate}', ${statusID}, ${userID})` ;
      
    return sql;
  };
@@ -77,6 +77,13 @@ app.get('/gettask', (req, res) => {
         if(err) throw err;
         console.log(results);
         res.send('Posts fetched...');
+    });
+});
+app.get('/addnewtask', (req, res) => {
+    let query = db.query(addNewTask('JS beginners','for all','2019-08-21','2019-08-22','2019-10-30',1,5), (err, result) => {
+        if(err) throw err;
+        console.log(result);
+        res.send(`Post inserted...`);
     });
 });
  app.listen('3000', () => {
