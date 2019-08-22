@@ -4,7 +4,7 @@ select * from status;
 --- 1. Add a task with the these attributes: title, description, created, updated, dueDate, statusID, userID
 insert into task 
 	(title, description, created, updated, due_date, status_id, user_id) 
-		values ('${title}', '${description}', '${created}', '${updated}', '${due_date}', '${status_id}', '${user_id}');
+		values ('${title}', '${description}', '${created}', '${updated}', '${dueDate}', '${statusID}', '${userID}');
 
 --- 2. Change the title of a task with these attributes: taskID, newTitle
 update task 
