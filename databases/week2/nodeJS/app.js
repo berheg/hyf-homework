@@ -18,6 +18,7 @@ db.connect((err) => {
 });
 
 const app = express();
+//function returns sql query for adding new task row
 const addNewTask = function(title, description, created, updated, dueDate, statusID, userID) {
     const sql = `insert into task ` +
                 `(title, description, created, updated, due_date, status_id, user_id) ` +
@@ -25,14 +26,14 @@ const addNewTask = function(title, description, created, updated, dueDate, statu
      
    return sql;
  };
- 
+ //function returns sql query for changing task title given task id
  const changeTaskTitle = function(taskID, newTitle) {
      const sql = `update task ` +
                  `set title = '${newTitle}'` + 
                  `where id = '${taskID}'`;
      return sql;
  };
- 
+ //function returns sql query for changing task due date for given task id
  const changeTaskDueDate = function(taskID, newDueDate) {
      const sql = `update task ` + 
                  `set due_date = '${newDueDate}'` + 
@@ -40,21 +41,21 @@ const addNewTask = function(title, description, created, updated, dueDate, statu
      return sql;
    
  };
- 
+ //function returns sql query for changing task status for given task id
  const changeTaskStatus = function(taskID, newStatus) {
      const sql = `update task inner join status on status.name = '${newStatus}' ` + 
                  `set task.status_id = status.id ` + 
                  `where task.id = ${taskID}`;
      return sql;
  };
- 
+ //function returns sql query to assign  task status completed for given task id
  const markTaskAsCompleted = function(taskID) {
      const sql = `update task inner join status on status.id = tassk.status_id ` + 
                  `set task.status_id = status.id ` + 
                  `where status.name = 'Done' and task.id = '${taskID}'`;
      return sql;
  };
- 
+ //function returns sql query for deleting task given task id
  const deleteTask = function(taskID) {
      const sql = `delete from task where id = '${taskID}'`;
      return sql;
@@ -70,7 +71,7 @@ const addNewTask = function(title, description, created, updated, dueDate, statu
  app.get('/updatepost/:id', (req, res) => {
      sqlQuery(deleteTask(2));
  });
- // Select posts
+ // Router for getting task table
 app.get('/gettask', (req, res) => {
     let sql = 'SELECT * FROM task';
     let query = db.query(sql, (err, results) => {
@@ -79,6 +80,7 @@ app.get('/gettask', (req, res) => {
         res.send('Posts fetched...');
     });
 });
+//Router for adding new task arrow function
 app.get('/addnewtask', (req, res) => {
     let query = db.query(addNewTask('JS beginners','for all','2019-08-21','2019-08-22','2019-10-30',1,5), (err, result) => {
         if(err) throw err;
@@ -86,6 +88,7 @@ app.get('/addnewtask', (req, res) => {
         res.send(`Post inserted...`);
     });
 });
+//Router for changing task status arrow functiom
 app.get('/changetaskstatus', (req, res) => {
     let query = db.query(changeTaskStatus(1,'Not started'), (err, result) => {
         if(err) throw err;
@@ -93,6 +96,7 @@ app.get('/changetaskstatus', (req, res) => {
         res.send(`Task Status Changed...`);
     });
 });
+//For listening port 3000
  app.listen('3000', () => {
     console.log('Server started on port 3000');
 });
