@@ -1,3 +1,10 @@
+/*
+*Express and mysql installed and created here
+*Port listener created
+*mysql connection created and connected
+*functions created for appropriate query return
+*Router for each query created
+*/
 const express = require('express');
 const mysql = require('mysql');
 
