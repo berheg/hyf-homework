@@ -5,7 +5,7 @@ const mysql = require('mysql');
 const db = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
-    password : '123456',
+    password : 'Hailu/423103',
     database : 'hyf19'    
 });
 
@@ -88,12 +88,20 @@ app.get('/addnewtask', (req, res) => {
         res.send(`Post inserted...`);
     });
 });
-//Router for changing task status arrow functiom
+//Router for changing task status given task id using arrow functiom
 app.get('/changetaskstatus', (req, res) => {
     let query = db.query(changeTaskStatus(1,'Not started'), (err, result) => {
         if(err) throw err;
         console.log(result);
         res.send(`Task Status Changed...`);
+    });
+});
+//Router for changing task title for given task id using arrow functiom
+app.get('/changetasktitle', (req, res) => {
+    let query = db.query(changeTaskTitle(7,'Car Repair'), (err, result) => {
+        if(err) throw err;
+        console.log(result);
+        res.send(`Task title Changed...`);
     });
 });
 //For listening port 3000
