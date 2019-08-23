@@ -1,3 +1,8 @@
+/*
+*Adds selected products to shopping cart
+*One can search from product lists to see description and demo
+*Product can be added to the the product lists and displayed 
+*/
 const addBtn = document.querySelector('button.addBtn');
 const searchBtn = document.querySelector('button.searchBtn');
 const usernameP = document.querySelector('#username');
@@ -180,6 +185,7 @@ function creatUlShippingCart(productList){
 };
 //searchBtn.addEventListener('keyup',inputEventHandler);
 searchInput.addEventListener('keyup',inputEventHandler);
+listSelect.addEventListener('click', () =>searchInput.innerHTML = listSelect.value);
 //search input keyup handler
 function inputEventHandler(){
   selectListDiv.style.zIndex = 8;
@@ -190,6 +196,7 @@ function inputEventHandler(){
     listSelect.innerHTML = product.name;
     selectProductList.appendChild(listSelect);
   }
+  
 }
 //search input blur event handler
 searchInput.addEventListener('blur', () =>{
