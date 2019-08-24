@@ -56,15 +56,15 @@ const addNewTask = function(title, description, created, updated, dueDate, statu
      return sql;
  };
  //function returns sql query to assign  task status completed for given task id
- const markTaskAsCompleted = function(taskID) {
+ const markTaskAsCompleted = function(taskID, statusName) {
      const sql = `update task inner join status on status.id = tassk.status_id ` + 
                  `set task.status_id = status.id ` + 
-                 `where status.name = 'Done' and task.id = '${taskID}'`;
+                 `where status.name = '${statusName}' and task.id = ${taskID}`;
      return sql;
  };
  //function returns sql query for deleting task given task id
  const deleteTask = function(taskID) {
-     const sql = `delete from task where id = '${taskID}'`;
+     const sql = `delete from task where id = ${taskID}`;
      return sql;
  };
  function sqlQuery(queryToBeExcuted){
@@ -125,6 +125,14 @@ app.get('/marktaskasdone', (req, res) => {
         if(err) throw err;
         console.log(result);
         res.send(`Task title Changed...`);
+    });
+});
+//Router for request deleting task row for given task id using arrow functiom
+app.get('/delettask', (req, res) => {
+    let query = db.query(deleteTask(37), (err, result) => {
+        if(err) throw err;
+        console.log(result);
+        res.send(`Task row deleted...`);
     });
 });
 //For listening port 3000
