@@ -12,7 +12,7 @@ const mysql = require('mysql');
 const db = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
-    password : 'Hailu/423103',
+    password : '123456',
     database : 'hyf19'    
 });
 
@@ -111,12 +111,20 @@ app.get('/changetasktitle', (req, res) => {
         res.send(`Task title Changed...`);
     });
 });
-//Router requst for changing task due_date for given task id and new due_date using arrow functiom
+//Router request for changing task due_date for given task id and new due_date using arrow functiom
 app.get('/changetaskduedate', (req, res) => {
     let query = db.query(changeTaskDueDate(7,'2019-08-24 18:25:20'), (err, result) => {
         if(err) throw err;
         console.log(result);
         res.send(`Task due_date Changed...`);
+    });
+});
+//Router for request mark task as completed for given task id using arrow functiom
+app.get('/marktaskasdone', (req, res) => {
+    let query = db.query(markTaskAsCompleted(7,'Done'), (err, result) => {
+        if(err) throw err;
+        console.log(result);
+        res.send(`Task title Changed...`);
     });
 });
 //For listening port 3000
