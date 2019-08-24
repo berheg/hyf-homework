@@ -111,6 +111,14 @@ app.get('/changetasktitle', (req, res) => {
         res.send(`Task title Changed...`);
     });
 });
+//Router requst for changing task due_date for given task id and new due_date using arrow functiom
+app.get('/changetaskduedate', (req, res) => {
+    let query = db.query(changeTaskDueDate(7,'2019-08-24 18:25:20'), (err, result) => {
+        if(err) throw err;
+        console.log(result);
+        res.send(`Task due_date Changed...`);
+    });
+});
 //For listening port 3000
  app.listen('3000', () => {
     console.log('Server started on port 3000');
