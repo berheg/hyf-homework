@@ -37,14 +37,14 @@ const addNewTask = function(title, description, created, updated, dueDate, statu
  const changeTaskTitle = function(taskID, newTitle) {
      const sql = `update task ` +
                  `set title = '${newTitle}'` + 
-                 `where id = '${taskID}'`;
+                 `where id = ${taskID}`;
      return sql;
  };
  //function returns sql query for changing task due date for given task id
  const changeTaskDueDate = function(taskID, newDueDate) {
      const sql = `update task ` + 
                  `set due_date = '${newDueDate}'` + 
-                 `where id = '${taskID}'`;
+                 `where id = ${taskID}`;
      return sql;
    
  };
