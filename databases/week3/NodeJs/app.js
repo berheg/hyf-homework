@@ -40,17 +40,26 @@ const changeArticleTitle = function(articleID, newTitle) {
 };
 //function returns sql query for changing article date for given task id
 const changeArticleDate = function(articleID, newDate) {
-    const sql = `update task ` + 
-                `set due_date = '${newDate}'` + 
+    const sql = `update article ` + 
+                `set date = '${newDate}'` + 
                 `where id = ${articleID}`;
     return sql;
   
 };
 //function returns sql query for changing article text for given task id
 const changeArticleText = function(articleID, newText) {
-    const sql = `update task ` + 
-                `set due_date = '${newText}'` + 
+    const sql = `update article ` + 
+                `set text = '${newText}'` + 
                 `where id = ${articleID}`;
     return sql;
   
 };
+ // Router for getting article table
+ app.get('/getarticle', (req, res) => {
+    let sql = 'SELECT * FROM article';
+    let query = db.query(sql, (err, results) => {
+        if(err) throw err;
+        console.log(results);
+        res.send('Article fetched...');
+    });
+});
