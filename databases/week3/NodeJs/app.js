@@ -31,3 +31,10 @@ const addNewArticle = function(title, artical_text, date) {
                 `values ('${title}', '${artical_text}', '${date}')` ;     
    return sql;
  };
+//function returns sql query for changing task title given task id
+const changeArticleTitle = function(articleID, newTitle) {
+    const sql = `update article ` +
+                `set title = '${newTitle}'` + 
+                `where id = ${articleID}`;
+    return sql;
+};
