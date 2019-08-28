@@ -31,17 +31,25 @@ const addNewArticle = function(title, artical_text, date) {
                 `values ('${title}', '${artical_text}', '${date}')` ;     
    return sql;
  };
-//function returns sql query for changing task title given task id
+//function returns sql query for changing article title given task id
 const changeArticleTitle = function(articleID, newTitle) {
     const sql = `update article ` +
                 `set title = '${newTitle}'` + 
                 `where id = ${articleID}`;
     return sql;
 };
-//function returns sql query for changing task due date for given task id
+//function returns sql query for changing article date for given task id
 const changeArticleDate = function(articleID, newDate) {
     const sql = `update task ` + 
                 `set due_date = '${newDate}'` + 
+                `where id = ${articleID}`;
+    return sql;
+  
+};
+//function returns sql query for changing article text for given task id
+const changeArticleText = function(articleID, newText) {
+    const sql = `update task ` + 
+                `set due_date = '${newText}'` + 
                 `where id = ${articleID}`;
     return sql;
   
