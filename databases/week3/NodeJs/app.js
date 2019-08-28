@@ -38,3 +38,11 @@ const changeArticleTitle = function(articleID, newTitle) {
                 `where id = ${articleID}`;
     return sql;
 };
+//function returns sql query for changing task due date for given task id
+const changeArticleDate = function(articleID, newDate) {
+    const sql = `update task ` + 
+                `set due_date = '${newDate}'` + 
+                `where id = ${articleID}`;
+    return sql;
+  
+};
