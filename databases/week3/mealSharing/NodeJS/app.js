@@ -24,3 +24,10 @@ db.connect((err) => {
 });
 
 const app = express();
+//function returns sql query for adding new article row in newsp database
+const addNewMeal = function(title, description,location, when, date) {
+    const sql = `insert into meal ` +
+                `(title, artical_text, date) ` +
+                `values ('${title}', '${description}', '${location}','${when}','${date}')` ;     
+   return sql;
+ };
