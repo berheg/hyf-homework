@@ -24,10 +24,24 @@ db.connect((err) => {
 });
 
 const app = express();
-//function returns sql query for adding new article row in newsp database
+//function returns sql query for adding new meal row in mealsharing database
 const addNewMeal = function(title, description,location, when, date) {
     const sql = `insert into meal ` +
                 `(title, artical_text, date) ` +
                 `values ('${title}', '${description}', '${location}','${when}','${date}')` ;     
+   return sql;
+ };
+ //function returns sql query for adding new reservation row in mealsharing database
+const addNewReservation = function(number_of_guests, meal_id, created_date) {
+    const sql = `insert into meal ` +
+                `(title, artical_text, date) ` +
+                `values (${number_of_guests}, ${meal_id},'${created_date}')` ;     
+   return sql;
+ };
+  //function returns sql query for adding new review row in mealsharing database
+const addNewReview = function(title, description, review_meal_id, stars, created_date) {
+    const sql = `insert into meal ` +
+                `(title, artical_text, date) ` +
+                `values ('${title}','${description}', ${review_meal_id},'${stars}','${created_date}')` ;     
    return sql;
  };
