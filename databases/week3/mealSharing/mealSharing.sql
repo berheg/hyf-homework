@@ -1,5 +1,4 @@
 create database mealsharing;
-use mealsharing;
 CREATE TABLE `meal`(
 `id` int(11)  unsigned NOT NULL AUTO_INCREMENT,
 `title` varchar(45) DEFAULT NULL,
