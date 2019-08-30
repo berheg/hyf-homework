@@ -12,7 +12,7 @@ const mysql = require('mysql');
 const db = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
-    password : '123456',
+    password : 'Hailu-423103',
     database : 'mealsharing'    
 });
 // Connect
@@ -33,8 +33,8 @@ const addNewMeal = function(title, description,location, when, date) {
  };
  //function returns sql query for adding new reservation row in mealsharing database
 const addNewReservation = function(number_of_guests, meal_id, created_date) {
-    const sql = `insert into reservation ` +
-                `(number_of_guests, artical_text, created_date) ` +
+    const sql = `insert into reservation` +
+                `(number_of_guests, meal_id, created_date) ` +
                 `values (${number_of_guests}, ${meal_id},'${created_date}')` ;     
    return sql;
  };
@@ -75,10 +75,18 @@ app.get('/getreview', (req, res) => {
 // Insert new meal
 app.get('/addnewmeal', (req, res) => {
     let query = db.query(addNewMeal('Rød grød med fløde','Danish typical meal','Griffenfeldsgade 7, 2200 København','2019-06-12 23:30:20', 15, 200, now()), 
-    meal, (err, result) => {
+    (err, result) => {
         if(err) throw err;
         console.log(result);
         res.send('New Meal added...');
+    });
+});
+// Insert new reservation
+app.get('/addnewreservation', (req, res) => {
+    let query = db.query(addNewReservation( 15, 2, '2019-08-30 20:30'), (err, result) => {
+        if(err) throw err;
+        console.log(result);
+        res.send('New Reservation added...');
     });
 });
 
