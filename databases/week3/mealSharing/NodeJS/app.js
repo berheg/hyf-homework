@@ -12,7 +12,7 @@ const mysql = require('mysql');
 const db = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
-    password : 'Hailu-423103',
+    password : '123456',
     database : 'mealsharing'    
 });
 // Connect
@@ -61,6 +61,15 @@ const addNewReview = function(title, description, review_meal_id, stars, created
         if(err) throw err;
         console.log(results);
         res.send('Reservation fetched...');
+    });
+});
+// Router for getting review table
+app.get('/getreview', (req, res) => {
+    let sql = 'SELECT * FROM review';
+    let query = db.query(sql, (err, results) => {
+        if(err) throw err;
+        console.log(results);
+        res.send('Review fetched...');
     });
 });
 app.listen('3000', () => {
