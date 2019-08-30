@@ -72,6 +72,16 @@ app.get('/getreview', (req, res) => {
         res.send('Review fetched...');
     });
 });
+// Insert new meal
+app.get('/addnewmeal', (req, res) => {
+    let query = db.query(addNewMeal('Rød grød med fløde','Danish typical meal','Griffenfeldsgade 7, 2200 København','2019-06-12 23:30:20', 15, 200, now()), 
+    meal, (err, result) => {
+        if(err) throw err;
+        console.log(result);
+        res.send('New Meal added...');
+    });
+});
+
 app.listen('3000', () => {
     console.log('Server started on port 3000');
 });
