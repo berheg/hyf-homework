@@ -12,7 +12,7 @@ const mysql = require('mysql');
 const db = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
-    password : '12345',
+    password : 'Hailu-423103',
     database : 'mealsharing'    
 });
 // Connect
@@ -44,7 +44,7 @@ const addNewReview = function(title, description, review_meal_id, stars, created
                 `(title, description, review_meal_id, stars, created_date) ` +
                 `values ('${title}','${description}', ${review_meal_id},'${stars}','${created_date}')` ;     
    return sql;
- };
+ }; 
  // Router for getting meal table
  app.get('/getmeal', (req, res) => {
     let sql = 'SELECT * FROM meal';
@@ -53,4 +53,16 @@ const addNewReview = function(title, description, review_meal_id, stars, created
         console.log(results);
         res.send('Meal fetched...');
     });
+});
+ // Router for getting reservation table
+ app.get('/getreservation', (req, res) => {
+    let sql = 'SELECT * FROM reservation';
+    let query = db.query(sql, (err, results) => {
+        if(err) throw err;
+        console.log(results);
+        res.send('Reservation fetched...');
+    });
+});
+app.listen('3000', () => {
+    console.log('Server started on port 3000');
 });
