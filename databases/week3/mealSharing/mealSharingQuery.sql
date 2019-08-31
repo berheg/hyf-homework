@@ -54,10 +54,12 @@ where  created_date between '2019-08-28'and'2019-08-29';
 select * from meal
 limit 5;
 -- Get the meals that have good reviews
-select meal.title 
+select meal.title, AVG(review.stars) as starAVG  
 from meal 
-inner join review on review.title = 'good'
-where meal.id = review.review_meal_id;
+inner join review on review.review_meal_id = meal.id
+group by meal.id
+having starAVG > 3;
+
 -- Get reservations for a specific meal sorted by created_date
 select meal.title,number_of_guests,reservation.created_date 
 from reservation
