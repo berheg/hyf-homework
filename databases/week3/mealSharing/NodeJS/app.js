@@ -45,6 +45,13 @@ const addNewReview = function(title, description, review_meal_id, stars, created
                 `values ('${title}','${description}', ${review_meal_id},${stars},'${created_date}')` ;     
    return sql;
  }; 
+  //function returns sql query for Updating a meal with any id in mealsharing database
+const updateMealwithId = function(id,newTitle,newMaxReservations) {
+    const sql = `update meal ` +
+                `set title = '${newTitle}', max_reservations = ${newMaxReservations} ` +
+                `where id = ${id}` ;     
+   return sql;
+ }; 
  // Router for getting meal table
  app.get('/getmeal', (req, res) => {
     let sql = 'SELECT * FROM meal';
