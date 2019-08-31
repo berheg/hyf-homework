@@ -47,7 +47,8 @@ SELECT *
 FROM meal   
 WHERE meal.title like '%Rød grød%';
 -- Get meals that has been created between two dates
-
+select * from meal
+where  created_date between '2019-08-28'and'2019-08-29';
 -- Get only specific number of meals fx return only 5 meals
 select * from meal
 limit 5;
@@ -68,4 +69,4 @@ select meal.title, AVG(review.stars) as starAVG
 from meal 
 inner join review on review.review_meal_id = meal.id
 group by meal.title
- ORDER BY starAVG ASC;  
+ORDER BY starAVG ASC;  
