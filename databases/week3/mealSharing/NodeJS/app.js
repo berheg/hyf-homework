@@ -104,6 +104,14 @@ app.get('/addnewreview', (req, res) => {
         res.send('New Review added...');
     });
 });
+// Update meal with given id and new attributes
+app.get('/updatemealwithid', (req, res) => {
+    let query = db.query(updateMealwithId( 5,'Chicken Roasted', 14), (err, result) => {
+        if(err) throw err;
+        console.log(result);
+        res.send('Meal updated...');
+    });
+});
 app.listen('3000', () => {
     console.log('Server started on port 3000');
 });
