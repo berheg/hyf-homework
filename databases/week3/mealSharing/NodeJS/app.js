@@ -42,7 +42,7 @@ const addNewReservation = function(number_of_guests, meal_id, created_date) {
 const addNewReview = function(title, description, review_meal_id, stars, created_date) {
     const sql = `insert into review ` +
                 `(title, description, review_meal_id, stars, created_date) ` +
-                `values ('${title}','${description}', ${review_meal_id},'${stars}','${created_date}')` ;     
+                `values ('${title}','${description}', ${review_meal_id},${stars},'${created_date}')` ;     
    return sql;
  }; 
  // Router for getting meal table
@@ -89,7 +89,14 @@ app.get('/addnewreservation', (req, res) => {
         res.send('New Reservation added...');
     });
 });
-
+// Insert new review
+app.get('/addnewreview', (req, res) => {
+    let query = db.query(addNewReview( 'Incridable', 'I am very much satisfied', 3, 10,'2019-08-31 20:30'), (err, result) => {
+        if(err) throw err;
+        console.log(result);
+        res.send('New Review added...');
+    });
+});
 app.listen('3000', () => {
     console.log('Server started on port 3000');
 });
