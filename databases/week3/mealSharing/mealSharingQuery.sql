@@ -38,10 +38,11 @@ delete from review
 select * from meal
 	where price < 150;
 -- Get meals that still has available reservations
-select meal.title, reservation.created_date as reservation_date
+select meal.id,meal.title, Meal.max_reservations as max_reservations ,sum(reservation.number_of_guests) as totalGuests
  from meal
  inner join reservation on reservation.meal_id = meal.id
-	where reservation.created_date > now();
+ group by meal.id 
+ having totalGuests > meal.max_reservations;
 -- Get meals that partially match a title. Rød grød med will match the meal with the title Rød grød med fløde
 SELECT *   
 FROM meal   
