@@ -1,0 +1,21 @@
+{
+  "name": "mealsharing",
+  "version": "1.0.0",
+  "description": "This is node js program for mealsharing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    ".gitignore",
+    "npm"
+  ],
+  "author": "Girmay",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
