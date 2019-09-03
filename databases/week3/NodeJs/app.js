@@ -63,12 +63,21 @@ const changeArticleText = function(articleID, newText) {
         res.send('Article fetched...');
     });
 });
-// Router for getting article table
+// Router for getting author table
 app.get('/getauthor', (req, res) => {
     let sql = 'SELECT * FROM author';
     let query = db.query(sql, (err, results) => {
         if(err) throw err;
         console.log(results);
         res.send('Author fetched...');
+    });
+});
+// Router for getting author-article table
+app.get('/getauthor-article', (req, res) => {
+    let sql = 'SELECT * FROM author_article';
+    let query = db.query(sql, (err, results) => {
+        if(err) throw err;
+        console.log(results);
+        res.send('Author-article fetched...');
     });
 });
