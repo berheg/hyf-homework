@@ -1,21 +1,22 @@
-let express = require('express');
-let app = express();
-//let obj = require("../data/meals.json");
+
+const express = require('express');
+const app = express();
+const fs = require ('fs');
+const mealsJson = fs.readFileSync (
+    __dirname + '/data/meals.json',
+    'utf8'
+  );
+const mealsObject = JSON.parse (mealsJson);
 app.listen(3000, () => console.log('Listening at 3000'));
-let fs = require("fs");
-console.log("\n *STARTING* \n");
-// Get content from file
-const contents = fs.readFile("./data/meals.json",'utf8', (err, jsonString) => {
-    if (err) {
-        console.log("File read failed:", err)
-        return
+app.get('/meals', (req, res) => {    
+      
+        res.send(mealsObject);
     }
-    console.log('File data:', jsonString) 
-});
-// Define to JSON type
-const jsonContent = JSON.parse(contents);
-// Get Value from JSON
-console.log("Title: ", jsonContent.title);
-console.log("Maxiumem number of guests: ", jsonContent.maxNumberOfGuests);
-console.log("Description: ", jsonContent.description);
-console.log("\n *EXIT* \n");
+);
+app.get('/cheap-meals', (req, res) => {
+    
+        const cheapMealsObject = mealsObject.filter(meal => {return meal.price <100;});
+        res.json(cheapMealsObject);
+    }
+);
+
