@@ -63,3 +63,12 @@ const changeArticleText = function(articleID, newText) {
         res.send('Article fetched...');
     });
 });
+// Router for getting article table
+app.get('/getauthor', (req, res) => {
+    let sql = 'SELECT * FROM author';
+    let query = db.query(sql, (err, results) => {
+        if(err) throw err;
+        console.log(results);
+        res.send('Author fetched...');
+    });
+});
