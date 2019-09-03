@@ -81,3 +81,12 @@ app.get('/getauthor-article', (req, res) => {
         res.send('Author-article fetched...');
     });
 });
+// Router for getting category table
+app.get('/getcategory', (req, res) => {
+    let sql = 'SELECT * FROM category';
+    let query = db.query(sql, (err, results) => {
+        if(err) throw err;
+        console.log(results);
+        res.send('Category fetched...');
+    });
+});
