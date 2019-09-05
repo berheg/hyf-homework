@@ -18,13 +18,19 @@ app.get('/meals', (req, res) => {
 //Router for cheap-meals request
 app.get('/cheap-meals', (req, res) => {    
         const cheapMealsObject = mealsObject.filter(meal => {return meal.price <100;});
-        res.json(cheapMealsObject);
+        res.send(cheapMealsObject);
     }
 );
 //Router for large-meals request
 app.get('/large-meals', (req, res) => {    
-    const lageMealsObject = mealsObject.filter(meal => {return meal.maxNumberOfGuests < 100;});
-    res.json(lageMealsObject);
+    const lageMealsObject = mealsObject.filter(meal => {return meal.maxNumberOfGuests > 10;});
+    res.send(lageMealsObject);
+}
+);
+//Router for meal request
+app.get('/meal/:id', (req, res) => {    
+    const selectedMeal = mealsObject.filter(meal => {return meal.id = parseInt(req.params.id);});
+    res.send(selectedMeal);
 }
 );
 
