@@ -43,5 +43,11 @@ app.get('/reservations', (req, res) => {
     res.send(reservationsObject);
 }
 );
+//Router for reservations mealId request
+app.get('/reservation/:id', (req, res) => {    
+    const selectedReservation = reservationsObject.filter(reservation => {return reservation.mealId = parseInt(req.params.id);});
+    res.send(selectedReservation);
+}
+);
 
 
