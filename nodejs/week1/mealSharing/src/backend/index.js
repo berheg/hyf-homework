@@ -6,7 +6,12 @@ const mealsJson = fs.readFileSync (
     __dirname + '/data/meals.json',
     'utf8'
   );
+  const reservationsJson = fs.readFileSync (
+    __dirname + '/data/reservation.json',
+    'utf8'
+  );
 const mealsObject = JSON.parse (mealsJson);
+const reservationsObject = JSON.parse (reservationsJson);
 //Server listening
 app.listen(3000, () => console.log('Listening at 3000'));
 //Router for meals request
@@ -27,10 +32,16 @@ app.get('/large-meals', (req, res) => {
     res.send(lageMealsObject);
 }
 );
-//Router for meal request
+//Router for meal id request
 app.get('/meal/:id', (req, res) => {    
     const selectedMeal = mealsObject.filter(meal => {return meal.id = parseInt(req.params.id);});
     res.send(selectedMeal);
 }
 );
+//Router for reservations request
+app.get('/reservations', (req, res) => {      
+    res.send(reservationsObject);
+}
+);
+
 
