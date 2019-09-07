@@ -9,7 +9,9 @@ const reservationsJson = fs.readFileSync (
 //Router for reservations with mealId request
 router.get('/:id', (req, res) => {    
     const selectedReservation = reservationsObject.filter(reservation => 
-        {return reservation.mealId = parseInt(req.params.id);});    
+        {if(reservation.mealId == parseInt(req.params.id)) 
+            return true;
+        });    
     if(selectedReservation.length == 1)    
         res.send(selectedReservation[0]);
     else{
