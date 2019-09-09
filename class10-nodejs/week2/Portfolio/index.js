@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
         attended: '2013'
     }
 ];
-if(object.attended == req.query.attended) 
+//if(object.attended == req.query.attended) 
 res.json(object);
  });
 app.get('/skills', (req, res) => {    
@@ -65,6 +65,7 @@ app.get('/skills', (req, res) => {
      }
      res.status(500).send(errorResponse);
  });
+ app.use('*',(req,res)=> res.status(404).send('Not found'));
   //Router will go here
  // module.exports=router;
 app.listen(3000, () => console.log('Listening at 3000'));
