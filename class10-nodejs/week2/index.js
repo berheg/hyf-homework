@@ -24,7 +24,7 @@ app.use(function(req,res,next){
     next();
 });
 app.get("/users", function(req, res) {
-  console.log(req.query);​
+  console.dir(req.query);​
   res.send(`test OK! olderThan =${req.query.olderThan}, else = ${req.query.else}`);
 })
 app.get("/users/:userId", function(req, res) {
