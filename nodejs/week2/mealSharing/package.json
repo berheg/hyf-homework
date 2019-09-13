@@ -9,6 +9,8 @@
   "author": "Girmay",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "express-validator": "^6.2.0",
     "nodemon": "^1.19.2"
   },
   "devDependencies": {
