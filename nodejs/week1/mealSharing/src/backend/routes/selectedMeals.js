@@ -7,7 +7,7 @@ const mealsJson = fs.readFileSync (
   );
   const mealsObject = JSON.parse (mealsJson);
 //Router for meal with selected id request
-router.get('/:id', (req, res) => {    
+router.get('/:id', (req, res) => {   
     const selectedMeal = mealsObject.filter(meal => {
         if(meal.id ==parseInt(req.params.id))
          return true;                
@@ -15,7 +15,7 @@ router.get('/:id', (req, res) => {
     if(selectedMeal.length == 1)    
         res.send(selectedMeal[0]);
     else{
-        res.status(404)//Set status to 404 as movie was not found
+        res.status(404)//Set status to 404 as meal was not found
         res.send({message: "Not Found"});
     }
 
