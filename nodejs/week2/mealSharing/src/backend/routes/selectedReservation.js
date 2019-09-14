@@ -15,7 +15,7 @@ router.get('/:id', (req, res) => {
     if(selectedReservation.length == 1)    
         res.send(selectedReservation[0]);
     else{
-        res.status(404)//Set status to 404 as movie was not found
+        res.status(404)//Set status to 404 as reservation was not found
         res.send({message: "Not Found"});
     }
 }
