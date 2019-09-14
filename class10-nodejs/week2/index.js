@@ -1,5 +1,7 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
+app.use(bodyParser());
 //RESTfull api HTTP methods:
 //GET get data 
 //POST add new object
@@ -24,12 +26,12 @@ app.use(function(req,res,next){
     next();
 });
 app.get("/users", function(req, res) {
-  console.dir(req.query);​
+  //console.dir(req.query);​
   res.send(`test OK! olderThan =${req.query.olderThan}, else = ${req.query.else}`);
 })
-app.get("/users/:userId", function(req, res) {
-  console.log(req.params);​
-  const userId = req.params;​
+app.get("/users/:userId", (req, res) => {
+  //console.log(req.params);​
+  const userId = parseInt(req.params);​
   res.send(`userId: ${userId}`);
 });​
 app.post("/users", function(req, res) {
