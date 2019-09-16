@@ -7,7 +7,7 @@
 */
 const express = require('express');
 const mysql = require('mysql');
-
+const bodyParser = require('body-parser');
 // Create connection
 const db = mysql.createConnection({
     host     : 'localhost',
@@ -24,6 +24,9 @@ db.connect((err) => {
 });
 
 const app = express();
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+app.use(bodyParser.json());
 //function returns sql query for adding new meal row in mealsharing database
 const addNewMeal = function(title, description,location, when, date) {
     const sql = `insert into meal ` +
@@ -112,6 +115,17 @@ app.get('/updatemealwithid', (req, res) => {
         res.send('Meal updated...');
     });
 });
+app.get('/getmeal/:id', (req, res) => {
+    const id = req.params.id;
+    const sql = "Select * from meal where id = ?"
+    db.query(sql,id, (err,result) =>{
+        if(err){
+            console.error(err);
+            throw err;
+        }
+        res.send(result);
+    })
+})
 app.listen('3000', () => {
     console.log('Server started on port 3000');
 });
