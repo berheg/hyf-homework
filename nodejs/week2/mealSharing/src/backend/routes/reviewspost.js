@@ -26,7 +26,7 @@ router.post('/', (req, res) => {
     fs.writeFileSync(
         __dirname + '/../data/reviews.json',
         reviewsNewJson, (err)=>{
-            if(err) throw err;
+          if(err) throw err;
         }
       ); 
       res.send('New review post added');             
