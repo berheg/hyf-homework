@@ -7,6 +7,7 @@
 */
 const express = require('express');
 const mysql = require('mysql');
+const bodyParser = require('body-parser');
 
 // Create connection
 const db = mysql.createConnection({
@@ -97,5 +98,18 @@ app.get('/getcategoryarticle', (req, res) => {
         if(err) throw err;
         console.log(results);
         res.send('Category_article fetched...');
+    });
+});
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+app.post('/authorpost', (req,res) =>{
+    const authorData = req.body;
+    const sql = ("insert into author SET ?");
+    db.query(sql,authorData,(err,result,query){
+        if(err){
+            console.error(err);
+            return;
+        }
+        res.send('Author added successfully!');
     });
 });
