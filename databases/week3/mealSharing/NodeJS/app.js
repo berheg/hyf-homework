@@ -125,7 +125,20 @@ app.get('/getmeal/:id', (req, res) => {
         }
         res.send(result);
     })
-})
+});
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+app.post('/authorpost', (req,res) =>{
+    const authorData = req.body;
+    const sql = ("insert into author SET ?");
+    db.query(sql,authorData,(err,result,query){
+        if(err){
+            console.error(err);
+            return;
+        }
+        res.send('Author added successfully!');
+    });
+});
 app.listen('3000', () => {
     console.log('Server started on port 3000');
 });
