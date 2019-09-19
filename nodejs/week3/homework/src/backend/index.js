@@ -1,7 +1,9 @@
 const express = require("express");
 const app = express();
 const mealsRouter = require("./api/meals");
-const router = express.Router();
+const reservationsRouter = require("./api/reservations");
+const reviewsRouter = require("./api/reviews");
+//const router = express.Router();
 
 const port = process.env.PORT || 5000;
 // For week4 no need to look into this!
@@ -15,9 +17,10 @@ app.use(express.urlencoded({ extended: true }));
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
 
-router.use("/meals", mealsRouter);
-
-app.use("/api", router);
+app.use("/api/meals", mealsRouter);
+app.use("/api/reservations", reservationsRouter);
+app.use("/api/reviews", reviewsRouter);
+//app.use("/api", router);
 
 // For week4 no need to look into this!
 /* // Ensures that the client router works on reload aswell.
