@@ -11,10 +11,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 router.use(bodyParser());
 //function returns sql query for adding new review row in mealsharing database
-const addNewMeal = function(review) {
+const addNewReview = function(review) {
   const sql = `insert into review ` +
-              `(number_of_guests, meal_id,created_date) ` +
-              `values('${review.number_of_guests}', '${review.meal_id}','${review.created_date}')` ;     
+              `(title, description, review_meal_id, stars,created_date) ` +
+              `values('${review.title}', '${review.description}','${review.review_meal_id}', '${review.stars}','${review.created_date}')` ;     
  return sql;
 };
 
