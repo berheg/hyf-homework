@@ -10,11 +10,11 @@ app.use(express.urlencoded({ extended: true }));
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
 router.use(bodyParser());
-//function returns sql query for adding new meal row in mealsharing database
-const addNewMeal = function(reservation) {
+//function returns sql query for adding new reservation row in mealsharing database
+const addNewReservation = function(reservation) {
   const sql = `insert into reservation ` +
               `(number_of_guests, meal_id,created_date) ` +
-              `values('${reservation.number_of_guests}', '${reservation.meal_id}','${meal.created_date}')` ;     
+              `values('${reservation.number_of_guests}', '${reservation.meal_id}','${reservation.created_date}')` ;     
  return sql;
 };
 
