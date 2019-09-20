@@ -1,17 +1,17 @@
 // Inspiration taken from https://medium.com/@mhagemann/create-a-mysql-database-middleware-with-node-js-8-and-async-await-6984a09d49f4
 
-var mysql = require("mysql");
+const mysql = require("mysql");
 
 require("dotenv").config();
 
-var pool = mysql.createPool({
+const pool = mysql.createPool({
   connectionLimit: 10,
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
   port: process.env.DB_PORT,
-  multipleStatements: true
+  multipleStatements: true,      
 });
 
 pool.getConnection((err, connection) => {
