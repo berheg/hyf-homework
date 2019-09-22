@@ -40,7 +40,7 @@ router.get("/", (request, response) => {
     `sum(reservation.number_of_guests) as totalGuests from meal` + 
     ` inner join reservation on reservation.meal_id = meal.id ` + 
     `group by meal.id` +
-    ` having totalGuests > meal.max_reservations`;
+    ` having totalGuests < meal.max_reservations`;
     pool.query(sql, function(err, results, fields) {
       if(err){
         console.error(err);
