@@ -13,7 +13,7 @@ router.use(bodyParser());
 //function returns sql query for adding new meal row in mealsharing database
 const addNewMeal = function(meal) {
   const sql = `insert into meal ` +
-              `(title, description, location,when,max_reservations,price,created_date) ` +
+              `(title, description, location, when, max_reservations, price, created_date) ` +
               `values('${meal.title}', '${meal.description}', '${meal.location}','${meal.when}',${meal.max_reservations},${meal.price},'${meal.created_date}')` ;     
  return sql;
 };
