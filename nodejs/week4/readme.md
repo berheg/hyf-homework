@@ -1,4 +1,6 @@
 Homework Week 4
+
+
 In this homework we would be building an application to interact with customers both online and via SMS. We would be using Twilio for communication in this project, which handles the SMS sending and receiving part via both a REST API and a Node client.
 
 Step 1: Create a Node Server visible to the world
