@@ -1,0 +1,96 @@
+/*--Header for all pages*/
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+/*logo image for all pages--*/
+.logo img{
+    width: 100px;
+    height: 100px;
+}
+/*-- part of the navigation section of all pages --*/
+nav{
+    width: 50%;
+    height: 60px;
+    border: 10px;
+    border-color: black;
+    background-color: rgb(211, 209, 206);
+    text-align: center; 
+    margin-right: 200px;
+    padding-top: 20px;  
+}
+/*Menu of the navigation bar style*/
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    justify-items: center;
+   padding-bottom: 30px;
+}
+a{
+    text-decoration: none;    
+}
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box; }
+h2 { font-size: 3.6rem; line-height: 1.25; letter-spacing: -.1rem; }
+
+.button,
+button
+{
+  display: inline-block;
+  height: 38px;
+  padding: 0 30px;
+  color: #555;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  cursor: pointer;
+  box-sizing: border-box;}  
+
+input[type="button"].button-primary {
+  color: #FFF;
+  background-color: #33C3F0;
+  border-color: #33C3F0; }
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+  height: 38px;
+  padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
+  background-color: #fff;
+  border: 1px solid #D1D1D1;
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box; }
+
+/* For devices larger than 400px */
+@media (min-width: 400px) {
+    .container {
+      width: 85%;
+      padding: 0; }
+}
+  
+/* For devices larger than 550px */
+@media (min-width: 550px) {
+.container {
+    width: 80%; }
+}
