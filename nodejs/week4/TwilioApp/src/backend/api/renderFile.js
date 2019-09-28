@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express;
 const router = express.Router();
-//assuming app is express Object.
+//router for rendering html
 router.get('/',function(req,res) {
     res.sendFile('index.html');
   });
