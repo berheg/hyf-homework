@@ -2,15 +2,15 @@
 require("dotenv").config();
 const port = process.env.PORT||5000;
 const subdomainKey = process.env.SUBDOMAIN_KEY;
-const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_AUTH_TOKEN;
-// setup twilio client
-const client = require('twilio')(accountSid, authToken);
-
+const bodyParser = require('body-parser');
 const express = require('express');
 const localtunnel = require('localtunnel');
 const renderFile = require('./api/renderFile')
 const app = express();
+
+// Body parser middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 // Public folder setup
 app.use(express.static('public'));
 app.use('/', renderFile);
@@ -29,14 +29,7 @@ const tunnel = localtunnel(port, { subdomain: subdomainKey }, (err, tunnel) => {
   tunnel.on('close', function() {
     // When the tunnel is closed
     console.log('Tunnel is closed');
-  });
-  // to send message
-  client.messages.create({
-    to: process.env.MY_pHONE,
-    from: process.env.TRIAL_NUMBER,
-    body: 'This is my first text message'
-  })
-  .then((message) => console.log(message.sid));
+  });  
   app.use("/check", tunnelCheckerRouter);
   app.use("/incoming-sms", twilioRouter);
   app.use("/kitchen/order", kitchenRouter);
