@@ -8,21 +8,8 @@
 const express = require('express');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
+const pool = require("./../database");
 
-// Create connection
-const db = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    password : '123456',
-    database : 'newsp'    
-});
-// Connect
-db.connect((err) => {
-    if(err){
-        throw err;
-    }
-    console.log('MySql Connected...');
-});
 
 const app = express();
 //function returns sql query for adding new article row in newsp database
@@ -58,7 +45,7 @@ const changeArticleText = function(articleID, newText) {
  // Router for getting article table
  app.get('/getarticle', (req, res) => {
     let sql = 'SELECT * FROM article';
-    let query = db.query(sql, (err, results) => {
+    let query = pool.query(sql, (err, results) => {
         if(err) throw err;
         console.log(results);
         res.send('Article fetched...');
@@ -67,7 +54,7 @@ const changeArticleText = function(articleID, newText) {
 // Router for getting author table
 app.get('/getauthor', (req, res) => {
     let sql = 'SELECT * FROM author';
-    let query = db.query(sql, (err, results) => {
+    let query = pool.query(sql, (err, results) => {
         if(err) throw err;
         console.log(results);
         res.send('Author fetched...');
@@ -76,7 +63,7 @@ app.get('/getauthor', (req, res) => {
 // Router for getting author-article table
 app.get('/getauthor-article', (req, res) => {
     let sql = 'SELECT * FROM author_article';
-    let query = db.query(sql, (err, results) => {
+    let query = pool.query(sql, (err, results) => {
         if(err) throw err;
         console.log(results);
         res.send('Author-article fetched...');
@@ -85,7 +72,7 @@ app.get('/getauthor-article', (req, res) => {
 // Router for getting category table
 app.get('/getcategory', (req, res) => {
     let sql = 'SELECT * FROM category';
-    let query = db.query(sql, (err, results) => {
+    let query = pool.query(sql, (err, results) => {
         if(err) throw err;
         console.log(results);
         res.send('Category fetched...');
@@ -94,7 +81,7 @@ app.get('/getcategory', (req, res) => {
 // Router for getting category table
 app.get('/getcategoryarticle', (req, res) => {
     let sql = 'SELECT * FROM category_article';
-    let query = db.query(sql, (err, results) => {
+    let query = pool.query(sql, (err, results) => {
         if(err) throw err;
         console.log(results);
         res.send('Category_article fetched...');
@@ -105,7 +92,7 @@ app.use(bodyParser.json());
 app.post('/authorpost', (req,res) =>{
     const authorData = req.body;
     const sql = ("insert into author SET ?");
-    db.query(sql,authorData,(err,result,query){
+    pool.query(sql,authorData,(err,result,query){
         if(err){
             console.error(err);
             return;
