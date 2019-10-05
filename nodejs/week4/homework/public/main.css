@@ -1,0 +1,145 @@
+body {
+    font-family: "Open Sans", sans-serif;
+    background-color: #F9FBFD;
+    text-align: center;
+}
+
+/*--Header for all pages*/
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+/*logo image for all pages--*/
+.logo img{
+    width: 100px;
+    height: 50px;
+}
+.logo-h1{
+    margin-top: 50px;
+    margin-left: 0px;
+}
+/*-- part of the navigation section of all pages --*/
+nav{
+    width: 50%;
+    height: 60px;
+    border: 10px;
+    border-color: black;
+    background-color: rgb(211, 209, 206);
+    text-align: center; 
+    margin-right: 200px;
+    margin-bottom: 50px;
+    padding-top: 20px;  
+}
+/*Menu of the navigation bar style*/
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    justify-items: center;
+   padding-bottom: 30px;
+}
+a{
+    text-decoration: none;    
+}
+
+body, h1, h2 {
+    margin: 0;
+}
+p{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+ul>li>ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 12px 12px 12px;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+ul>li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 6px;
+}
+.mealBox{
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    align-content: stretch;
+    z-index: 2;
+}
+footer {    
+    display: flex;
+    flex-direction: row;
+    align-content: space-around;    
+    padding: 1rem;
+    background-color: #efefef;
+    text-align: center;
+    margin-top: 50px;
+  }
+  .footer{
+      display: flex;
+      flex-direction: row;
+      align-content: space-around;
+  }
+  .backgroundPic{
+    display: flex;
+    flex-direction: row;
+      position: absolute;
+      z-index: -3;
+      height: 100px;
+  }
+  .searchInput{
+      height: 30px;
+      width: 200px;
+      margin-bottom: 30px;
+  }
+  .searchList{
+    margin-top: 0px;
+    width: 100px;
+    height: 200px;
+    z-index: -2;
+    position: absolute;
+    background-color: aqua;
+    align-self: center;
+}
+.searchMealList{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    align-self: center;
+}
+.searchMealList>li:hover{
+    background-color: rgb(16, 185, 30);
+}
+aside{
+    float: right;
+    margin-right: 30px;
+    width: 250px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    border-style: double;
+    border-color: rgb(193, 127, 255);
+    text-align: center;
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
+form>input>button{
+    width: 200px;
+    height: 80px;
+}
