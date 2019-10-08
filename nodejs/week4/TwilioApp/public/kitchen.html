@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="main.css" />
+  <title>SMS Application</title>
+</head>
+<body>
+  <!--header start-->       
+  <header>
+    <img src="" alt="Logo of the company"
+    />
+    <nav class="navbar">                    
+      <a href="#newOrder">New Order</a>                
+      <a href="#">Menu</a>  
+      <a href="">Status</a>
+      <a href="">Help</a>              
+    </nav>
+  </header>  <!--header end--> 
+  <!--The head of the page and content--> 
+  <div class="container">
+    <article class="menu" id="menu">
+      <h3>Menus Available</h3>
+      <ol>
+        <li>Pizza</li>
+        <li>Burger</li>
+        <li>Salad</li>
+      </ol>
+    </article>
+    <article class="newOrder" id="newOrder">
+      <h3>Order New Meal</h3>
+      <select name="menuSelect" id="menuSelect">
+        <option value="0">Select Menu</option>
+        <option value="pizza">Pizza</option>
+        <option value="burger">Burger</option>
+        <option value="Salad">Salad</option>
+      </select> 
+      <input type="button" id="buttonOrder" value="Order" class="button button-primary">
+    </article>         
+    <h2></h2>    
+    <article class="status">
+        <h3>Get Status Of Your Ordered Meal</h3>
+        <input type="number" name="id" id="orderId" placeholder="Enter ordered number" min="1">
+        <input type="button" id="buttonStatus" value="Get Status" class="button button-primary">
+    </article>
+    <article class="help" id="help">
+      <ul>
+        <h3>Check the list blow</h3> 
+        <li>Click 'Menu' in the menu bar to see available meals</li>
+        <li>Click 'New Order' in the menubar and select the meal and click order button to order new meal</li>
+        <li>Click 'Status' in the menubar and fill your order number and click the button to get the status of your order</li>
+      </ul>
+    </article>
+    
+  </div>
+  
+  <script src="main.js"></script>
+</body>
+</html>

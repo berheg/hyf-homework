@@ -1,6 +1,11 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
+<<<<<<< HEAD
 const router = app.router();
+=======
+app.use(bodyParser());
+>>>>>>> b14b42e4cdc18365700bc6153b9d8fee50e6f6a6
 //RESTfull api HTTP methods:
 //GET get data 
 //POST add new object

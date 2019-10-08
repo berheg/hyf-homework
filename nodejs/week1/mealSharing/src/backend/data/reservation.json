@@ -1,25 +1,30 @@
 [
     {
+      "id":1,
       "name": "Benjamin Hughes",
       "email": "benjamin@hughes.dk",
       "mealId": 1
     },
     {
+      "id":2,
       "name": "Girmay Hailu",
       "email": "123abc@hyf.dk",
       "mealId": 2
     },
     {
+      "id": 3,
       "name": "Sami Tadesse",
       "email": "123abc@gmail.dk",
       "mealId": 3
     },
     {
+      "id": 4,
       "name": "Sara Tiru",
       "email": "123abc@yahoo.dk",
       "mealId": 4
     },
     {
+      "id": 5,
       "name": "Jon Dawit",
       "email": "jkhabc@co.dk",
       "mealId": 5

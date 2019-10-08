@@ -7,12 +7,12 @@
 */
 const express = require('express');
 const mysql = require('mysql');
-
+const bodyParser = require('body-parser');
 // Create connection
 const db = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
-    password : 'Hailu-423103',
+    password : '123456',
     database : 'mealsharing'    
 });
 // Connect
@@ -24,6 +24,9 @@ db.connect((err) => {
 });
 
 const app = express();
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+app.use(bodyParser.json());
 //function returns sql query for adding new meal row in mealsharing database
 const addNewMeal = function(title, description,location, when, date) {
     const sql = `insert into meal ` +
@@ -110,6 +113,30 @@ app.get('/updatemealwithid', (req, res) => {
         if(err) throw err;
         console.log(result);
         res.send('Meal updated...');
+    });
+});
+app.get('/getmeal/:id', (req, res) => {
+    const id = req.params.id;
+    const sql = "Select * from meal where id = ?"
+    db.query(sql,id, (err,result) =>{
+        if(err){
+            console.error(err);
+            throw err;
+        }
+        res.send(result);
+    })
+});
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+app.post('/authorpost', (req,res) =>{
+    const authorData = req.body;
+    const sql = ("insert into author SET ?");
+    db.query(sql,authorData,(err,result,query){
+        if(err){
+            console.error(err);
+            return;
+        }
+        res.send('Author added successfully!');
     });
 });
 app.listen('3000', () => {
