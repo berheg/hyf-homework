@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const router = app.router();
 //RESTfull api HTTP methods:
 //GET get data 
 //POST add new object
@@ -15,7 +16,7 @@ const app = express();
 //PUT 
 // + body:​
 // { "email": "rame2@trustpilot.com" }
-app.use(function(req,res,next){
+router.use(function(req,res,next){
     const secret = req.query;
     if(secret!=='radex'){
         res.status(403).send('No access, nice trying Hackers!');
@@ -23,18 +24,18 @@ app.use(function(req,res,next){
     }
     next();
 });
-app.get("/users", function(req, res) {
+router.get("/users", function(req, res) {
   console.log(req.query);​
   res.send(`test OK! olderThan =${req.query.olderThan}, else = ${req.query.else}`);
 })
-app.get("/users/:userId", function(req, res) {
+router.get("/users/:userId", function(req, res) {
   console.log(req.params);​
   const userId = req.params;​
   res.send(`userId: ${userId}`);
 });​
-app.post("/users", function(req, res) {
+router.post("/users", function(req, res) {
   res.send("POST ok!");
 });
-app.listen(3000, function() {
+router.listen(3000, function() {
   console.log("Server started");
 });
