@@ -1,5 +1,5 @@
-function homeRouter(req, router) {
-    //console.log(req.param.id);
+async function homeRouter(req, router) {
+    console.log(req.params.id);
   getBodyContainer();  
   const data = await fetchServer();
   await renderHTML(data);
@@ -45,24 +45,19 @@ function getBodyContainer(){
     />
     <h1 class="logo-h1">ZOLLA RESTURANT</h1> 
     <nav class="navbar">               
-      <a href="./mealId.html">Menu</a>  
-      <a href="">Reservations</a>
-      <a href="./review.html">Review</a>              
+      <a href="./home.js">Menu</a>  
+      <a href="./meal.js">Reservations</a>
+      <a href="./review.js">Review</a>              
     </nav>
-  </header>  <!--header end-->   
-  
-    
-    <div class="text-welcome">
-      
-    </div>
+  </header>  <!--header end--> 
      
   </div>
     
   <section class="bigContainer">
   <div class="backgroudPic">
   <img src="./background/vegan.jpg" alt="background picture">
-  <img src="./background/vegan2.jpg" alt="background picture">
-  <img src="./background/meat.jpg" alt="background picture">
+  <img src="../public/background/vegan2.jpg" alt="background picture">
+  <img src="../public/background/meat.jpg" alt="background picture">
 </div>  
       <h2>All Meals in the database</h2>
       <div class="mealBox">
