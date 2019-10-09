@@ -15,7 +15,7 @@ async function review() {
   await renderHTML(data);
     
 }  
-mealsId();
+review();
 formBtn.addEventListener('click', formBtnEventHandler)
 //searchBtn.addEventListener('keyup',inputEventHandler);
 searchInput.addEventListener('keyup',inputEventHandler);
@@ -85,9 +85,9 @@ function getBodyContainer(){
             <ul class="searchMealList"></ul>
         </div>
         <div class="backgroudPic">      
-            <img src="./background/vegan.jpg" alt="background picture">
-            <img src="./background/vegan2.jpg" alt="background picture">
-            <img src="./background/meat.jpg" alt="background picture">
+            <img src="/../background/vegan.jpg" alt="background picture">
+            <img src="/../public/background/vegan2.jpg" alt="background picture">
+            <img src="/../public/background/meat.jpg" alt="background picture">
         </div>
         
     </div>       
@@ -122,10 +122,10 @@ async function formBtnEventHandler(){
     });
   };
   //search input blur event handler
-searchInput.addEventListener('blur', () =>{
+/*searchInput.addEventListener('blur', () =>{
   searchInput.value = '';
   selectListDiv.style.zIndex = -2;  
-});
+});*/
 //search product lists with searchkey
 function searchMealList(searchKey){
   console.log(mealLists);
