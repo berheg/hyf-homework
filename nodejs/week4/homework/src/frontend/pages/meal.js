@@ -7,19 +7,19 @@ const h2 = document.querySelector('h2.mealId');
 const h3 = document.querySelector('h3.formH3');
 let id;
 async function mealsId(req, res) {
-  //console.log(req.param.id);
+  console.log(req.params.id);
   getBodyContainer();  
   id = 3;
   //h2.innerHTML += id;
-  const data = await fetchServer(req.param.id);
+  const data = await fetchServer(req.params.id);
   await renderHTML(data);
     
 }  
 mealsId();
 formBtn.addEventListener('click', formBtnEventHandler)
 //searchBtn.addEventListener('keyup',inputEventHandler);
-searchInput.addEventListener('keyup',inputEventHandler);
-listSelect.addEventListener('click', () =>searchInput.innerHTML = listSelect.value);
+//searchInput.addEventListener('keyup',inputEventHandler);
+//listSelect.addEventListener('click', () =>searchInput.innerHTML = listSelect.value);
 async function fetchServer(id){
   const res = await fetch(`/api/meals/${id}`);
   const jsonData = await res.json();
@@ -59,9 +59,9 @@ function getBodyContainer(){
     />
     <h1 class="logo-h1">ZOLLA RESTURANT</h1> 
     <nav class="navbar">               
-      <a href="./mealId.html">Menu</a>  
-      <a href="">Reservations</a>
-      <a href="./review.html">Review</a>              
+      <a href="/">Menu</a>  
+      <a href="/meal">Reservations</a>
+      <a href="/review">Review</a>              
     </nav>
   </header>  <!--header end-->   
   <aside>
@@ -129,7 +129,13 @@ async function formBtnEventHandler(){
   //search input blur event handler
 searchInput.addEventListener('blur', () =>{
   searchInput.value = '';
-  selectListDiv.style.zIndex = -2;  
+  selectListDiv.style.display = none;  
+});
+searchInput.addEventListener('keyup', () =>{
+ const searchKey = searchInput.value;
+ selectListDiv.style.display = block;
+ searchMealList(searchKey);
+    
 });
 //search product lists with searchkey
 function searchMealList(searchKey){
