@@ -1,7 +1,5 @@
-const functionArray = [
-    add(),subtract(),multiply()
-]
-function add(a,b){
+
+const add = function (a,b){
     return a+b;
 }
 function subtract(a,b){
@@ -10,9 +8,12 @@ function subtract(a,b){
 function multiply(a,b){
     return a*b;
 }
-/*for(let fun of functionArray){
-    console.log(fun(30.60));
-}*/
+const functionArray = [
+    add,subtract,multiply
+]
+for(let fun of functionArray){
+    console.log(fun(30,60));
+}
 const funConstant = function (){
     return 'I am a constant function!'
 }
