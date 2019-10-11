@@ -1,7 +1,7 @@
 //Import required Routers in the given directory
 const express = require('express');
 const mealsRoutes = require( __dirname +'/routes/meals.js');
-const bodyParser = require('body-parser');
+//const bodyParser = require('body-parser');
 
 const selectedMealRoutes = require (__dirname +'/routes/selectedMeal.js');
 const reservationsRoutes = require( __dirname +'/routes/reservations.js');
@@ -12,7 +12,7 @@ const mealspostRoute = require( __dirname +'/routes/mealspost.js');
 const reservationspostRoute = require( __dirname +'/routes/reservationspost.js');
 const reviewspostRoute = require( __dirname +'/routes/reviewspost.js');
 const app = express();
-app.use(bodyParser());
+//app.use(bodyParser());
 
 //Middlewares call appropriate router to use based on the request route
 app.use((req,query,next) =>{
