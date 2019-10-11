@@ -5,7 +5,6 @@ const reservationsJson = fs.readFileSync(
     __dirname + '/../data/reservations.json',
     'utf8'
   );
-const validator = require('validator');
 const reservationsObject = JSON.parse (reservationsJson);
 const post = {
     "name":"Anderson Jonson",

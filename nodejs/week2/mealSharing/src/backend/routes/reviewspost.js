@@ -6,7 +6,6 @@ const reviewsJson = fs.readFileSync(
     __dirname + '/../data/reviews.json',
     'utf8'
   );
-const validator = require('validator');
 const reviewsObject = JSON.parse (reviewsJson);
 const post = {
     "id": 4,
