@@ -5,7 +5,6 @@ const mealsJson = fs.readFileSync(
     __dirname + '/../data/meals.json',
     'utf8'
   );
-const validator = require('validator');
 const mealsObject = JSON.parse (mealsJson);
 const post = {
     "id":6,"title":"India traditional food",
