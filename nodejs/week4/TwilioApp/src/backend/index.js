@@ -19,7 +19,7 @@ const twilioRouter = require('./api/twilioRouter');
 const tunnelCheckerRouter = require('./api/tunnelChecker');
 const kitchenRouter = require('./api/kitchen');
   
-const tunnel = localtunnel(port, { subdomain: subdomainKey }, (err, tunnel) => {
+/*const tunnel = localtunnel(port, { subdomain: subdomainKey }, (err, tunnel) => {
   if (!err)
     console.log('Tunnel is open');
   else
@@ -29,7 +29,7 @@ const tunnel = localtunnel(port, { subdomain: subdomainKey }, (err, tunnel) => {
   tunnel.on('close', function() {
     // When the tunnel is closed
     console.log('Tunnel is closed');
-  });  
+  });*/  
   app.use("/check", tunnelCheckerRouter);
   app.use("/incoming-sms", twilioRouter);
   app.use("/kitchen/order", kitchenRouter);
