@@ -19,8 +19,9 @@ app.use(function(req,res,next){
 })
 //router for /numbers/add 
 app.get('/numbers/add', function(req, res) {  
-  const first = req.query.first;
-  const second = req.query.second;
+  //const first = req.query.first;
+  //const second = req.query.second;
+  const {first, second} = req.query;
   console.log(second);
   //if one or both of the inputs are not defined
   if(first== undefined||second==undefined){
