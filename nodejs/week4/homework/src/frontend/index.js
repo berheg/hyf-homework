@@ -1,7 +1,7 @@
 import _ from 'lodash';
 //import "./index.css";
 import "./main.css";
-
+import meat from "../assets/meat.jpg";
 import SPARouter from "@kodnificent/sparouter";
 
 import mealRouter from "./pages/meal";
