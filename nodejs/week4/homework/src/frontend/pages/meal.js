@@ -1,3 +1,4 @@
+//import meat from '../assets/background/meat.jpg';
 const formBtn = document.querySelector('button.formBtn');
 const phoneInput = document.querySelector('input.phoneInput');
 const nameInput = document.querySelector('input.nameInput');
@@ -5,6 +6,7 @@ const emailInput = document.querySelector('input.emailInput');
 const guestInput = document.querySelector('input.guestInput');
 const h2 = document.querySelector('h2.mealId');
 const h3 = document.querySelector('h3.formH3');
+//const imgDiv = document.querySelector('div.backgroudPic');
 let id;
 async function mealsId(req, res) {
   console.log(req.params.id);
@@ -28,7 +30,10 @@ async function fetchServer(id){
   return jsonData;
 }
 //renders lists of data
-function renderHTML(data){	
+function renderHTML(data){  
+  //const myIcon = new Image();
+  //myIcon.src = meat;
+  //imgDiv.appendChild(myIcon);
   const ulTitle = document.querySelector('ul.mealTitle');
   const ulList = document.querySelector('ul.mealUl');
   ulList.innerHTML = "";  
@@ -85,9 +90,9 @@ function getBodyContainer(){
       <ul class="searchMealList"></ul>
     </div>
     <div class="backgroudPic">      
-      <img src="./background/vegan.jpg" alt="background picture">
-      <img src="./background/vegan2.jpg" alt="background picture">
-      <img src="./background/meat.jpg" alt="background picture">
+      <img src=""  class = "meat"   alt="background picture">
+      <img src="../assets/background/vegan2.jpg" alt="background picture">
+      <img src="../assets/background/meat.jpg" alt="background picture">
     </div>
     </div>  
     <h2 class="mealId">Meal with id: </h2>    
