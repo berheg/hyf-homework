@@ -4,21 +4,21 @@ function multiplication(firstNum,secondNum){
     let productFirstNum = 1; 
     let productSecondNum = 1;
     if(typeof(firstNum)!=="object"){
-        productFirstNum = parseInt(firstNum);
+        productFirstNum = Number(firstNum);
     }else{
         for(let j=0; j<firstNum.length;j++){
             if(numCheCker(firstNum[j])===true){ 
-                productFirstNum *= parseInt(firstNum[j]);            
+                productFirstNum *= Number(firstNum[j]);            
             }else
                 return numCheCker(firstNum[j]);
         } 
     }
     if(typeof(secondNum)!=="object"){
-        productFirstNum = parseInt(firstNum);
+        productFirstNum = Number(firstNum);
     }else{
         for(let i=0; i < secondNum.length;i++){
             if(numCheCker(secondNum[i])===true){             
-                productSecondNum *= parseInt(secondNum[i]);
+                productSecondNum *= Number(secondNum[i]);
             }else
                 return numCheCker(secondNum[i]);
         }
