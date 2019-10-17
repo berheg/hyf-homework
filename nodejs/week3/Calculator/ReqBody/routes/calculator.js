@@ -13,9 +13,10 @@ app.use(express.json());
 router.use(bodyParser());
 //router for /numbers/multiply/[0-9]+/[0-9]+
 router.get('/', function(req, res) { 
-    const firstNum = req.query.firstParam;
-    const secondNum =req.query.secondParam;
-        
+    const {firstNum, secondNum } = req.query;/*.firstParam;
+    const secondNum =req.query.secondParam;*/
+     console.log(firstNum);
+     console.log(secondNum);  
   
   //if one or both of the inputs are not defined
   if(firstNum== undefined||secondNum==undefined){
@@ -23,7 +24,7 @@ router.get('/', function(req, res) {
   }
   //if both inputs are given properly
   else{
-      const method = req.query.method;
+      const method  = req.params;
       console.log(method);
       const methodsArr = ['add','multiply','subtraction','division'];
       let output;
