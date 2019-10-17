@@ -8,8 +8,8 @@ const numCheCker = require('./numChecker.js');
 router.use(bodyParser());
 //router for /numbers/multiply/[0-9]+/[0-9]+
 router.get('/', function(req, res) { 
-    const firstNum = req.query.firstParam;
-    const secondNum =req.query.secondParam;
+    const {firstNum, secondNum} = req.query;/*.firstParam;
+    const secondNum =req.query.secondParam;*/
         
   
   //if one or both of the inputs are not defined
@@ -21,22 +21,22 @@ router.get('/', function(req, res) {
     let sumFirstNum = 0; 
     let sumSecondNum = 0;
     if(typeof(firstNum)!=="object"){
-        sumFirstNum = parseInt(firstNum);
+        sumFirstNum = Number(firstNum);
     }else{
         for(let j=0; j<firstNum.length;j++){
             if(numCheCker(firstNum[j])===true){ 
-                sumFirstNum += parseInt(firstNum[j]);            
+                sumFirstNum += Number(firstNum[j]);            
             }else
                 res.send(numCheCker(firstNum[j]));
         } 
     }
     console.log(typeof(secondNum));
     if(typeof(secondNum)!== "object"){
-        sumSecondNum = parseInt(secondNum);
+        sumSecondNum = Number(secondNum);
     }else{
         for(let i=0; i < secondNum.length;i++){
             if(numCheCker(secondNum[i])===true){             
-                sumSecondNum += parseInt(secondNum[i]);
+                sumSecondNum += Number(secondNum[i]);
             }else
                 res.send(numCheCker(secondNum[i]));
         } 
