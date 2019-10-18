@@ -1,5 +1,5 @@
 import _ from 'lodash';
-//import "./index.css";
+import "./index.css";
 import "./main.css";
 
 import SPARouter from "@kodnificent/sparouter";
