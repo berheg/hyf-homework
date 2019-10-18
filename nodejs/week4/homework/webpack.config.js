@@ -8,7 +8,8 @@ module.exports = {
   entry: ["babel-polyfill", "./src/frontend/index.js"],
   output: {
     path: path.join(__dirname, outputDirectory),
-    filename: "bundle.js"
+    filename: "bundle.js",
+    publicPath: '/dist'
     
   },
   module: {
@@ -25,7 +26,7 @@ module.exports = {
         use: ["style-loader", "css-loader"]
       },
       {
-        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        test: /\.(png|jpg|woff|woff2|eot|ttf|svg)$/,
         loader: "url-loader?limit=100000"
       }
     ]

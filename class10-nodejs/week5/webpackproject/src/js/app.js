@@ -25,3 +25,4 @@ function updateSecretParagraph() {
         secretParagraph.style.display = 'none';
     }
 }
+export default updateSecretParagraph;

@@ -5,22 +5,22 @@ function subtraction(firstNum,secondNum){
     let sumFirstNum = 0; 
     let sumSecondNum = 0;
     if(typeof(firstNum)!=="object"){
-        sumFirstNum = parseInt(firstNum);
+        sumFirstNum = Number(firstNum);
     }else{
         for(let j=0; j<firstNum.length;j++){           
             if(numCheCker(firstNum[j])===true){ 
-                sumFirstNum += parseInt(firstNum[j]);            
+                sumFirstNum += Number(firstNum[j]);            
             }else
                 return numCheCker(firstNum[j]);
         } 
     }
     console.log(typeof(secondNum));
     if(typeof(secondNum)!== "object"){
-        sumSecondNum = parseInt(secondNum);
+        sumSecondNum = Number(secondNum);
     }else{
         for(let i=0; i < secondNum.length;i++){
             if(numCheCker(secondNum[i])===true){             
-                sumSecondNum += parseInt(secondNum[i]);
+                sumSecondNum += Number(secondNum[i]);
             }else
                 return numCheCker(secondNum[i]);
         } 

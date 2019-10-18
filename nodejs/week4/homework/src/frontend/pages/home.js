@@ -2,7 +2,7 @@ async function homeRouter(req, router) {
     console.log(req.params.id);
   getBodyContainer();  
   const data = await fetchServer();
-  await renderHTML(data);
+   renderHTML(data);
   
 }
 homeRouter();
@@ -55,9 +55,9 @@ function getBodyContainer(){
     
   <section class="bigContainer">
   <div class="backgroudPic">
-  <img src="./background/vegan.jpg" alt="background picture">
-  <img src="../public/background/vegan2.jpg" alt="background picture">
-  <img src="../public/background/meat.jpg" alt="background picture">
+  <img src="../assets/background/vegan.jpg" alt="background picture">
+  <img src="../assets/background/vegan2.jpg" alt="background picture">
+  <img src="../assets/background/meat.jpg" alt="background picture">
 </div>  
       <h2>All Meals in the database</h2>
       <div class="mealBox">
