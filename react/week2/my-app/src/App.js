@@ -4,7 +4,7 @@ import Header from './components/layout/Header';
 import Todos from './components/Todo';
 import AddTodo from './components/AddTodo';
 import About from './components/pages/About';
-
+import HeaderH1 from './components/formElement/header1';
 import './App.css';
 //App component class
 class App extends Component {
@@ -73,8 +73,8 @@ class App extends Component {
               path='/'
               render={(props) => (
                 <React.Fragment>
-                  <h1>Tasks Todo</h1>
-                  <h1>You have used {this.state.counter} seconds on this website</h1>
+                  <HeaderH1 title={"Tasks Todo"} />
+                  <HeaderH1 title= {`You have used ${this.state.counter} seconds on this website`} />
                   <div className="todoForm">
                     <AddTodo todos={this.state.todos} addTodo={this.addTodo} text={this.state.text}/>
                     <Todos
