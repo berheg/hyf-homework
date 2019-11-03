@@ -32,7 +32,7 @@ export default class Users extends Component {
         if(this.state.users.length){
           this.setState({usersLength: this.state.users.length})
         }          
-        if(!this.state.users.length){
+        else{
             this.setState({noItem: true})
         } 
       }
