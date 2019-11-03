@@ -25,10 +25,11 @@ export default class Users extends Component {
       this.setState({noItem: false, isLoading: true});      
       const inputValue = this.state.inputValue;        
       const users = await API.getUser(inputValue);
+      console.log(users);
+      
       if(users.message=== undefined)
       {
-        this.setState({ users:users.items, isLoading: false, error: false });        
-        this.setState({users: this.state.users.filter(user =>String(user.login).startsWith(this.state.inputValue)) });       
+        this.setState({ users:users.items, isLoading: false, error: false });                    
         if(this.state.users.length){
           this.setState({usersLength: this.state.users.length})
         }          
@@ -39,8 +40,9 @@ export default class Users extends Component {
       else{
         this.setState({errorValue: users.message, isLoading: false, error: true});
       }           
-    }  
+    }   
   }
+
   render() {
     return (
       <Card>
