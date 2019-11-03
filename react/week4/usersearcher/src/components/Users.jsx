@@ -26,8 +26,8 @@ export default class Users extends Component {
       const inputValue = this.state.inputValue;        
       const users = await API.getUser(inputValue);
       console.log(users);
-      
-      if(users.message=== undefined)
+      setTimeout(() => {
+        if(users.message=== undefined)
       {
         this.setState({ users:users.items, isLoading: false, error: false });                    
         if(this.state.users.length){
@@ -39,7 +39,9 @@ export default class Users extends Component {
       }
       else{
         this.setState({errorValue: users.message, isLoading: false, error: true});
-      }           
+      }        
+      }, 500);
+         
     }   
   }
 
