@@ -22,8 +22,7 @@ export default class Users extends Component {
   handleInputChange = async (e) =>{
     this.setState({inputValue: e.target.value});
     if(this.state.inputValue!=='') {      
-      this.setState({noItem: false});
-      this.setState({isLoading: true});       
+      this.setState({noItem: false, isLoading: true});      
       const inputValue = this.state.inputValue;        
       const users = await API.getUser(inputValue);
       if(users.message=== undefined)
@@ -31,7 +30,8 @@ export default class Users extends Component {
         this.setState({ users:users.items, isLoading: false, error: false });        
         this.setState({users: this.state.users.filter(user =>String(user.login).startsWith(this.state.inputValue)) });       
         if(this.state.users.length){
-          this.setState({usersLength: this.state.users.length})        }          
+          this.setState({usersLength: this.state.users.length})
+        }          
         if(!this.state.users.length){
             this.setState({noItem: true})
         } 
