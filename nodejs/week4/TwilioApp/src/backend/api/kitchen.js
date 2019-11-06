@@ -1,11 +1,10 @@
-const http = require('http');
+
 require("dotenv").config();
 const express = require('express');
 const app = express;
 const router = express.Router();
 const bodyParser = require('body-parser');
-const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_AUTH_TOKEN;
+const {accountSid, authToken} = process.env;
 //const database = require('../database');
 // setup twilio client
 const client = require('twilio')(accountSid, authToken);
@@ -27,7 +26,7 @@ router.get("/:id", (req, res) => {
   
 });
 //update status of order with given id 
-router.put("/:id",(req, res) => {
+router.patch("/:id",(req, res) => {
   const  newStatus= req.body.status;
   console.log(newStatus);
   const id = req.params.id;

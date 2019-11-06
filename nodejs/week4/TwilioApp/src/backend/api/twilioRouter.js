@@ -48,17 +48,14 @@ router.post("/", (req, res) => {
     if(incomingMessage.order){
         const incomingOrder = incomingMessage.order;
         const bool = typeValue.includes(incomingOrder);
-        if(bool){ 
-            //console.log(typeValue.includes(incomingOrder));       
-            const index = orderData.index;
-            //console.log(orderData);
+        if(bool){                   
+            const index = orderData.index;            
             const id = index +1;
             const newOrder = new Order(incomingOrder,id);
             msgToSend = `Order nr. ${id}`;         
             orderData.index = index + 1;
             idNew = id;
-            orderData.order.push(newOrder); 
-            //console.log(newOrder);  
+            orderData.order.push(newOrder);             
             const orderNewJson = JSON.stringify(orderData);
             fs.writeFileSync(
                 __dirname + '/../data/order.json',
