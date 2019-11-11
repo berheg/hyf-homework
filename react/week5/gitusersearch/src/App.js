@@ -23,12 +23,7 @@ function App() {
         <Route path='/About' component = {About} />
         <Route path='/Overview' component = {Overview} />
         </div>
-    </Router>
-    
-      
-        
-        
-     
+    </Router>   
     
   );
 }
