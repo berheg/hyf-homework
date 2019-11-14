@@ -4,26 +4,26 @@ import {Link } from 'react-router-dom';
 class ProfileLink extends Component {
 
     render(){
-        
+        const {linkStyleOverview, linkStyleStars, linkStyleRepository, linkStyleFollowers, linkStyleFollowing, user} = this.props;
         return (
             <React.Fragment>
                 <div style={divStyle}>
                     <li style={liStyle}>
-                        <Link style={linkStyle}  to='/Overview'>Overview</Link>
+                        <Link style={linkStyleOverview}  to={{pathname:'/Overview', state:{user:{user}}}}>Overview</Link>
                     </li>  
                     <li style={liStyle}>
-                        <Link to='/Repository'>Repository</Link> 
+                        <Link style={linkStyleRepository} to={{pathname:'/Repository', state:{user:{user}}}}>Repository</Link> 
                     </li>                    
                     <li style={liStyle}>
-                        <Link to='/Stars'>Stars </Link> 
+                        <Link style={linkStyleStars} to={{pathname:'/Stars', state:{user:{user}}}}>Stars </Link> 
                     </li>                    
                     <li style={liStyle}>
-                        <Link to='/Following'>Following</Link>
+                        <Link style={linkStyleFollowing} to={{pathname:'/Following', state:{user:{user}}}}>Following</Link>
                     </li>                         
                     <li style={liStyle}>
-                        <Link to='/Followers'>Followers</Link>
+                        <Link style={linkStyleFollowers} to={{pathname:'/Followers', state:{user:{user}}}}>Followers</Link>
                     </li>                 
-                </div>           
+                </div>     
                 
                 
             </React.Fragment>
@@ -41,8 +41,6 @@ const liStyle ={
     textAlign:'center',
     width:'100px'
 }
-const linkStyle = {
-    color:'#fff000'
-}
+
 
 export default ProfileLink;
