@@ -5,11 +5,13 @@ import Repository from './Repository';
 import Stars from './Stars';
 import Followers from './Followers';
 import Following from './Following';
+import {UserProvider} from '../context/userContext';
 
 class Overview extends Component {
 
     render(){
-        //const {user} = this.props;
+        const {user} = this.props.location.state;
+        console.log(user);
         return (            
             <Router>                        
               <div className="App">
@@ -18,7 +20,9 @@ class Overview extends Component {
                 path= '/Overview'
                 render= {(props) =>(
                   <React.Fragment>
-                    <OverviewItem  />
+                    <UserProvider value={user}>
+                      <OverviewItem user={user} />
+                    </UserProvider>                    
                   </React.Fragment>
                 )}
                 />
