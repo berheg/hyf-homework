@@ -5,9 +5,11 @@ import ProfileLink from './ProfileLink';
 class Followers extends Component {
 
     render(){
+        const {user} = this.props.location.state;
+        console.log(user);
         return (
             <React.Fragment>
-               <ProfileLink />
+               <ProfileLink linkStyleFollowers={linkStyle} user={user}/>
               <div> 
                   <React.Fragment>
                    <h1>Followers</h1>
@@ -18,6 +20,9 @@ class Followers extends Component {
         )
     }
   
+}
+const linkStyle = {
+    color:'#fff000'
 } 
 
 export default Followers;
