@@ -6,9 +6,11 @@ import ProfileLink from './ProfileLink';
 class Repository extends Component {
 
     render(){
+        const {user} = this.props.location.state;
+        console.log(user);
         return (
             <React.Fragment>
-               <ProfileLink />
+               <ProfileLink linkStyleRepository={linkStyle} user={user}/>
               <div >  
                   <React.Fragment>
                    <h1>Repository</h1>
@@ -19,6 +21,9 @@ class Repository extends Component {
         )
     }
   
+}
+const linkStyle = {
+    color:'#fff000'
 } 
 
 export default Repository;
