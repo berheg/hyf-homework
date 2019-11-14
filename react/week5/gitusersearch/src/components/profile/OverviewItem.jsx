@@ -5,17 +5,19 @@ import {UserConsumer} from "../context/userContext";
 class OverviewItem extends Component {
 
     render(){
-        //const {user}= this.props;
+        const {user}= this.props;
         return (
             <React.Fragment>
-                <ProfileLink />            
+                <ProfileLink linkStyleOverview={linkStyle} user={user} />            
                 
                 <div >       
                     <React.Fragment>
                         <UserConsumer>
                         {
                             (user) => {
-                                return <h1>Overview {user} </h1>
+                                return (
+                                    <h1>Overview: {user.login} </h1>
+                                )
                                         
                             }
                         }
@@ -29,6 +31,8 @@ class OverviewItem extends Component {
     }
   
 } 
-
+const linkStyle = {
+    color:'#fff000'
+}
 
 export default OverviewItem;
