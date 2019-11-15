@@ -1,0 +1,30 @@
+.App {
+  text-align: center;
+  align-content: center;
+  align-items: center;
+}
+
+.App-header {
+  background-color: #282c34;  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  height: 10%;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+li{
+  list-style: none;
+}
+div{
+  text-align:center ;
+}
+li{
+  text-align: center;
+  width: 100;
+}
