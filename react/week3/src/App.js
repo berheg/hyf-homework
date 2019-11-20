@@ -13,7 +13,9 @@ class App extends Component {
     counter:0,
     text: 'No Item',
     inputDescription:'',
-    inputDeadline: ''
+    inputDeadline: '',
+    title: 'Edit',
+    inputType: "checkbox"	
 	};
   //excuted when the component is mounted
 	componentDidMount() {
@@ -42,21 +44,34 @@ class App extends Component {
           this.setState({text: 'No Item'}); 
         console.log(this.state.todos);   
   };
-  // Delete Todo
-  updateTodo = (id) => {  
-    this.setState({title: 'Update'}); 
-    console.log(this.state.title);   
-};
-handleDescriptionChange = event => {
-  this.setState({
-    inputDescription: event.target.value
-  })
+  // Update Todo
+  updateTodo = (id, event) => {  
+    if(this.state.title === 'Edit'){
+      const inputValue = document.querySelector('input.inputCheckbox').innerHTML;
+      this.setState({title: 'Update'});
+      this.setState({inputType: 'text'});
+      document.querySelector('input.inputCheckbox').value= inputValue;
+    }      
+    else{
+      const { newTodo} = this.state.todos[id].description;
+      this.setState({
+        todos: event.target.value
+      })
+      this.setState({title: 'Edit'});
+      this.setState({inputType: 'checkbox'});
+    } 
+    console.log(this.state.title);     
+  };
+  handleDescriptionChange = event => {
+    this.setState({
+      inputDescription: event.target.value
+    })
   }
   handleDeadlineChange = event => {
   this.setState({
     inputDeadline: event.target.value
       })      
-}
+  }
   // Add Todo
   addTodo = () => {   
     if(this.state.inputDescription!== '' && this.state.inputDeadline!== ''){
@@ -124,7 +139,9 @@ handleDescriptionChange = event => {
                       todos={this.state.todos}
                       title={this.state.title}
                       markComplete={this.markComplete}
-                      delTodo={this.delTodo}                      
+                      delTodo={this.delTodo}
+                      updateTodo = {this.updateTodo}
+                      inputType={this.state.inputType}                      
                     />
                   </div>
                 </React.Fragment>
