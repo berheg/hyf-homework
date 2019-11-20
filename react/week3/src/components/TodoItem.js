@@ -19,8 +19,8 @@ export class TodoItem extends Component {
       textDecoration: this.props.todo.completed ? 'line-through' : 'none'
     }
   }
-  // Delete Todo
-  updateTodo = (id) => { 
+  // update Todo
+  /*updateTodo = (id) => { 
     if(this.state.title === 'Edit'){
       const inputValue = document.querySelector('input.inputCheckbox').innerHTML;
       this.setState({title: 'Update'});
@@ -32,19 +32,20 @@ export class TodoItem extends Component {
       this.setState({inputType: 'checkbox'});
     } 
     console.log(this.state.title);   
-};
+};*/
 
   render() {
     const { id, description , deadline} = this.props.todo;
-    const {title} = this.state;   
+    const { title} = this.props.title;
+    //const {title} = this.state;   
     return (
       <div style={this.getStyle()}>
         <p>
-          <input type= {this.state.inputType} onChange={this.props.markComplete.bind(this, id) } 
-          style={checkboxStyle} className = 'inputCheckbox'/> {' '}
+          <input type= {this.props.inputType} onChange={this.props.markComplete.bind(this, id) } 
+          style={checkboxStyle} className = 'inputCheckbox' value = {description}/> {' '}
           { description } | {deadline}
           <button onClick={this.props.delTodo.bind(this, id)} style={btnStyle}>Delete</button>
-          <button onClick={this.updateTodo} style={editBtnStyle}>{''} {title}</button> 
+          <button onClick={this.props.updateTodo.bind(this, id)} style={editBtnStyle}>{''} {title}</button> 
         </p>
       </div>
     )
