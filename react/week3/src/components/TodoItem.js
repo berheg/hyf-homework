@@ -16,7 +16,7 @@ export class TodoItem extends Component {
       background:'#00FFFF',  
       padding: '10px',
       borderBottom: '1px #ccc dotted',
-      textDecoration: this.props.todo.completed ? 'line-through' : 'none'
+      textDecoration: this.props.todo.completed && this.props.title==='Edit' ? 'line-through' : 'none'
     }
   }
   // update Todo
@@ -36,13 +36,14 @@ export class TodoItem extends Component {
 
   render() {
     const { id, description , deadline} = this.props.todo;
-    const { title} = this.props.title;
+    const { title} = this.props;
+    const {inputValue}=this.props;
     //const {title} = this.state;   
     return (
       <div style={this.getStyle()}>
         <p>
           <input type= {this.props.inputType} onChange={this.props.markComplete.bind(this, id) } 
-          style={checkboxStyle} className = 'inputCheckbox' value = {description}/> {' '}
+          style={checkboxStyle} className = 'inputCheckbox' value = {inputValue}/> {' '}
           { description } | {deadline}
           <button onClick={this.props.delTodo.bind(this, id)} style={btnStyle}>Delete</button>
           <button onClick={this.props.updateTodo.bind(this, id)} style={editBtnStyle}>{''} {title}</button> 
