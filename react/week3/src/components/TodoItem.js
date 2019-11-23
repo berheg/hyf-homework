@@ -19,26 +19,10 @@ export class TodoItem extends Component {
       textDecoration: this.props.todo.completed && this.props.title==='Edit' ? 'line-through' : 'none'
     }
   }
-  // update Todo
-  /*updateTodo = (id) => { 
-    if(this.state.title === 'Edit'){
-      const inputValue = document.querySelector('input.inputCheckbox').innerHTML;
-      this.setState({title: 'Update'});
-      this.setState({inputType: 'text'});
-      document.querySelector('input.inputCheckbox').value= inputValue;
-    }      
-    else{
-      this.setState({title: 'Edit'});
-      this.setState({inputType: 'checkbox'});
-    } 
-    console.log(this.state.title);   
-};*/
-
+  
   render() {
     const { id, description , deadline} = this.props.todo;
-    const { title} = this.props;
-    const {inputValue}=this.props;
-    //const {title} = this.state;   
+    const {title,inputValue}=this.props;      
     return (
       <div style={this.getStyle()}>
         <p>
