@@ -14,8 +14,10 @@ class App extends Component {
     text: 'No Item',
     inputDescription:'',
     inputDeadline: '',
+    editInputValue: '',
     title: 'Edit',
-    inputType: "checkbox"	
+    inputType: "checkbox"	,
+    inputValue:''
 	};
   //excuted when the component is mounted
 	componentDidMount() {
@@ -25,15 +27,22 @@ class App extends Component {
 	}
 
 	// Toggle Complete
-	markComplete = (id) => {
-		this.setState({
-			todos: this.state.todos.map((todo) => {
-				if (todo.id === id) {
-					todo.completed = !todo.completed;
-				}
-				return todo;
-			})
-		});
+	markComplete = (id, event) => {
+    if(this.state.title === 'Edit'){    
+      this.setState({
+        todos: this.state.todos.map((todo) => {
+          if (todo.id === id) {
+            todo.completed = !todo.completed;
+          }
+          return todo;
+        })
+      });
+    }
+    else{
+      this.setState({
+        editInputValue: event.target.value
+      })
+    }		
 	};
   // Delete Todo
   delTodo = (id) => {  
@@ -46,16 +55,19 @@ class App extends Component {
   };
   // Update Todo
   updateTodo = (id, event) => {  
-    if(this.state.title === 'Edit'){
-      const inputValue = document.querySelector('input.inputCheckbox').innerHTML;
+    if(this.state.title === 'Edit'){      
       this.setState({title: 'Update'});
       this.setState({inputType: 'text'});
-      document.querySelector('input.inputCheckbox').value= inputValue;
+      const inputDescription = this.state.todos[id-1].description;
+      this.setState({inputValue: inputDescription});
     }      
     else{
-      const { newTodo} = this.state.todos[id].description;
+      
+      console.log("newDescription:"+ this.state.editInputValue);
+      const newTodos = this.state.todos;
+      newTodos[id-1].description = this.state.editInputValue;
       this.setState({
-        todos: event.target.value
+        todos: newTodos
       })
       this.setState({title: 'Edit'});
       this.setState({inputType: 'checkbox'});
