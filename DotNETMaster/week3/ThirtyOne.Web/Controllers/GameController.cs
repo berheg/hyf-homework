@@ -43,6 +43,24 @@ namespace ThirtyOne.Web.Controllers
             return RedirectToAction("Index", new { Id = g.GameId.ToString() });
         }
 
+
+        public IActionResult DrawFromDeck(int Id)
+        {
+            Game game = _gameService.LoadGame(Id);
+            game.CurrentPlayer.DrawFromDeck(game);
+            _gameService.SaveGame(game);
+            return RedirectToAction("Index", new { Id = game.GameId });
+
+        }
+        public IActionResult DrawFromTable(int Id)
+        {
+            Game game = _gameService.LoadGame(Id);
+            game.CurrentPlayer.DrawFromTable(game);
+            _gameService.SaveGame(game);
+            return RedirectToAction("Index", new { Id = game.GameId });
+
+        }
+
         public IActionResult Index(int Id)
         {
             Game g = _gameService.LoadGame(Id);
