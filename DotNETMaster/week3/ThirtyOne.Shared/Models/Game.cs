@@ -73,6 +73,7 @@ namespace ThirtyOne.Shared.Models
             StartGame();
         }
 
+        [JsonIgnore]
         public Player CurrentPlayer
         {
             get
