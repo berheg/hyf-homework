@@ -13,6 +13,7 @@ body {
 
     .row .cardtable {
         display: flex;
+        flex-direction: row;
     }
 
     .row .playingcard {
