@@ -16,12 +16,14 @@
 <div class="container">
     @foreach (var p in Model.Players.OrderByDescending(p => p.Hand.CalculateScore()))
     {
-        <div class="row">
+        <div class="game-over">
             <h2>@p.Name: @p.Hand.CalculateScore() points</h2>
-            @foreach (var c in p.Hand)
-            {
-                <img src="~/images/Cards/@c.FileName()" class="playingcard" />
-            }
+            <div class="row">
+                @foreach (var c in p.Hand)
+                {
+                    <img src="~/images/Cards/@c.FileName()" class="playingcard" />
+                }
+            </div>
         </div>
     }
 </div>
