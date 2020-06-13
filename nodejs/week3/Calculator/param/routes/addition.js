@@ -8,8 +8,7 @@ const numCheCker = require('./numChecker.js');
 router.use(bodyParser());
 //router for /numbers/multiply/[0-9]+/[0-9]+
 router.get('/', function(req, res) { 
-    const {firstNum, secondNum} = req.query;/*.firstParam;
-    const secondNum =req.query.secondParam;*/
+    const {firstNum, secondNum} = req.query;
         
   
   //if one or both of the inputs are not defined
