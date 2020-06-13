@@ -13,8 +13,7 @@ app.use(express.json());
 router.use(bodyParser());
 //router for /numbers/multiply/[0-9]+/[0-9]+
 router.get('/', function(req, res) { 
-    const {firstNum, secondNum } = req.query;/*.firstParam;
-    const secondNum =req.query.secondParam;*/
+    const {firstNum, secondNum } = req.query;
      console.log(firstNum);
      console.log(secondNum);  
   
