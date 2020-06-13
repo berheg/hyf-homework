@@ -25,6 +25,14 @@ router.get("/", (request, response) => {
   const title = request.query.title;
   const createdAfter = request.query.createdAfter;
   const limit = request.query.limit;
+  let maxPriceResults;
+  let availableReservationsResults;
+  let titleResults;
+  let createdAfterResults;
+  let limitResults;
+  console.log(request.url);
+  console.log(availableReservations);
+  console.log(limit);
   if(maxPrice!== undefined){
     const sql =`select * from meal where price < ${maxPrice}`;
     pool.query(sql, function(err, results, fields) {
@@ -33,6 +41,7 @@ router.get("/", (request, response) => {
         return;
       }
       response.json(results);
+      //maxPriceResults = results;
     });
   }
   else if(availableReservations!==undefined){
@@ -46,7 +55,9 @@ router.get("/", (request, response) => {
         console.error(err);
         return;
       }
+      //console.log(results);
       response.json(results);
+      //availableReservationsResults = results;
     });
   }
   else if(title !== undefined){
@@ -57,6 +68,7 @@ router.get("/", (request, response) => {
         return;
       }
       response.json(results);
+      //titleResults = results;
     });
   }
   else if(createdAfter !== undefined){
@@ -67,6 +79,7 @@ router.get("/", (request, response) => {
         return;
       }
       response.json(results);
+      //createdAfterResults = results;
     });
   }
   else if(limit !== undefined){
@@ -76,8 +89,11 @@ router.get("/", (request, response) => {
         console.error(err);
         return;
       }
+      console.log('Data fetched at limit!');
       response.json(results);
+      //limitResults = results;
     });
+    
   }
   else{
     pool.query(sqlFunction.getAllRows('meal'), function(err, results, fields) {
@@ -88,6 +104,9 @@ router.get("/", (request, response) => {
       response.json(results);
     });
   }
+  console.log('Data fetched!')
+  //const outPut = maxPriceResults + "Availabe Reservations: " + availableReservations +titleResults+createdAfterResults+limitResults;
+  //response.send(outPut);
 });
 //add new row in the given table
 router.post("/", (request, response) => {

@@ -13,7 +13,11 @@ class App extends Component {
     counter:0,
     text: 'No Item',
     inputDescription:'',
-    inputDeadline: ''
+    inputDeadline: '',
+    editInputValue: '',
+    title: 'Edit',
+    inputType: "checkbox"	,
+    inputValue:''
 	};
   //excuted when the component is mounted
 	componentDidMount() {
@@ -23,15 +27,22 @@ class App extends Component {
 	}
 
 	// Toggle Complete
-	markComplete = (id) => {
-		this.setState({
-			todos: this.state.todos.map((todo) => {
-				if (todo.id === id) {
-					todo.completed = !todo.completed;
-				}
-				return todo;
-			})
-		});
+	markComplete = (id, event) => {
+    if(this.state.title === 'Edit'){    
+      this.setState({
+        todos: this.state.todos.map((todo) => {
+          if (todo.id === id) {
+            todo.completed = !todo.completed;
+          }
+          return todo;
+        })
+      });
+    }
+    else{
+      this.setState({
+        editInputValue: event.target.value
+      })
+    }		
 	};
   // Delete Todo
   delTodo = (id) => {  
@@ -42,21 +53,37 @@ class App extends Component {
           this.setState({text: 'No Item'}); 
         console.log(this.state.todos);   
   };
-  // Delete Todo
-  updateTodo = (id) => {  
-    this.setState({title: 'Update'}); 
-    console.log(this.state.title);   
-};
-handleDescriptionChange = event => {
-  this.setState({
-    inputDescription: event.target.value
-  })
+  // Update Todo
+  updateTodo = (id, event) => {  
+    if(this.state.title === 'Edit'){      
+      this.setState({title: 'Update'});
+      this.setState({inputType: 'text'});
+      const inputDescription = this.state.todos[id-1].description;
+      this.setState({inputValue: inputDescription});
+    }      
+    else{
+      
+      console.log("newDescription:"+ this.state.editInputValue);
+      const newTodos = this.state.todos;
+      newTodos[id-1].description = this.state.editInputValue;
+      this.setState({
+        todos: newTodos
+      })
+      this.setState({title: 'Edit'});
+      this.setState({inputType: 'checkbox'});
+    } 
+    console.log(this.state.title);     
+  };
+  handleDescriptionChange = event => {
+    this.setState({
+      inputDescription: event.target.value
+    })
   }
   handleDeadlineChange = event => {
   this.setState({
     inputDeadline: event.target.value
       })      
-}
+  }
   // Add Todo
   addTodo = () => {   
     if(this.state.inputDescription!== '' && this.state.inputDeadline!== ''){
@@ -124,7 +151,9 @@ handleDescriptionChange = event => {
                       todos={this.state.todos}
                       title={this.state.title}
                       markComplete={this.markComplete}
-                      delTodo={this.delTodo}                      
+                      delTodo={this.delTodo}
+                      updateTodo = {this.updateTodo}
+                      inputType={this.state.inputType}                      
                     />
                   </div>
                 </React.Fragment>
