@@ -1,41 +1,54 @@
+ body{
+     margin-top: 0em;
+ }          
  h1 {
     text-align: center;
 }
-.myimage {
-   margin-left:40%;
-}
 img {
-    float: left;
     width: 100px;
    height: 100px;
    margin-right: 20px;
+   border-radius: 50%;
+   margin-top: 50px;
 }
 .name {
     margin-left: 20px;
-    color: rgb(55, 0, 255);
+    color: rgb(19, 190, 119);
 }
-.contact {
-    float: right;
+aside {
+    background-color: #156155 ;
+    float: left;
+    margin-top: 0em;
     margin-left: 40px;
     margin-right: 40px;
-    padding-left: 5rem;
-    color: #29627e;
+    padding-left: 5rem;   
     box-shadow: inset 5px 0 5px -5px #29627e;
+    width: 20%;
+    margin-right: 100px;  
+    color: floralwhite;
+    border-radius: 5px; 
 }
 .maincv{
-    margin-left: 20px;
+    margin-left: 100px;
+    margin-top: 100px;
+    padding-top: 50px;
+    font-family: 'Courier New', Courier, monospace;
+    width: 80%;
 }
 footer {
+    clear: both;
     align-content:center;
     margin-left: 30%;    
 }
-a {
+footer a {
     margin-left: 50px;
     font-size: 40px;
+    color: blue;
 }
-p a{
+p a,a{
     font-size: 14px;
     margin-left: 0px;
+    color: floralwhite;
 }
 .work p{
     font-weight: bold;
@@ -43,4 +56,11 @@ p a{
 .work a{
     font-size: 16px; 
     margin-left: 0;   
+}
+li{
+    list-style: none;
+}
+h2{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
 }
