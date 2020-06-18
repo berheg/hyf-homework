@@ -12,7 +12,9 @@
   },
   "author": "Girmay",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "html2canvas": "^1.0.0-rc.5"
+  },
   "devDependencies": {
     "express": "^4.17.1",
     "jspdf": "^1.5.3",
