@@ -41,6 +41,7 @@ aside {
     font-family: 'Courier New', Courier, monospace;
     width: 55%;
     background-color: #ffffff;
+    font-weight: bold;
 }
 .progressbar{
     width: 80%;
@@ -83,7 +84,7 @@ li{
     padding-left: 0px;
 }
 h2{
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Cinzel Decorative', cursive;
     font-weight: bolder;
     font-size: 20px;
     padding-left: 0px;
